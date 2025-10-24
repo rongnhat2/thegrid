@@ -1,0 +1,1936 @@
+<!DOCTYPE html>
+<html lang="en" class="tw-scroll-smooth">
+
+<head>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Grid | Alpha</title>
+  <meta name="description" content="V2 Managed Vault on Base network." />
+  <meta property="og:title" content="Alpha ∞/21" />
+  <meta property="og:description" content="V2 Managed Vault on Base network." />
+  <meta property="og:image"
+    content="https://dhedge.org/api/og?chain=8453&amp;creationDate=Jul%203%2C%202025&amp;name=Alpha%20%E2%88%9E%2F21&amp;returnLabel=1%20Day&amp;returnValue=%2B0.2%25&amp;torosId=&amp;totalValue=%246.25M" />
+  <link rel="preload" href="/_next/static/media/chart_skeleton_dark.2b9ff297.svg" as="image" fetchpriority="high" />
+  <link rel="preload" href="/_next/static/media/chart_skeleton_light.e5be52a0.svg" as="image" fetchpriority="high" />
+  <meta name="next-head-count" content="9" />
+  <meta charSet="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="dHEDGE" />
+  <meta property="og:url" content="https://dhedge.org" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@dHedgeOrg" />
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link data-next-font="" rel="preconnect" href="/" crossorigin="anonymous" />
+  <script id="theme-handler" data-nscript="beforeInteractive">
+    const isDarkOsSettings = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const osTheme = isDarkOsSettings ? 'dark' : 'light';
+
+    try {
+      const storedTheme = localStorage.getItem('theme');
+      const theme = storedTheme ? JSON.parse(storedTheme) : osTheme;
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('tw-dark');
+      } else {
+        document.documentElement.classList.remove('tw-dark');
+      }
+
+      localStorage.setItem('theme', JSON.stringify(theme));
+    } catch {
+      document.documentElement.classList.toggle('tw-dark', isDarkOsSettings);
+      localStorage.setItem('theme', JSON.stringify(osTheme));
+    }
+  </script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="scrollbar">
+  <div id="__next"><!--$-->
+    <style>
+      :root {
+        --rk-blurs-modalOverlay: blur(0px);
+        --rk-fonts-body: SFRounded, ui-rounded, "SF Pro Rounded", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        --rk-radii-actionButton: 9999px;
+        --rk-radii-connectButton: 12px;
+        --rk-radii-menuButton: 12px;
+        --rk-radii-modal: 24px;
+        --rk-radii-modalMobile: 28px;
+        --rk-colors-accentColor: #0E76FD;
+        --rk-colors-accentColorForeground: #FFF;
+        --rk-colors-actionButtonBorder: rgba(0, 0, 0, 0.04);
+        --rk-colors-actionButtonBorderMobile: rgba(0, 0, 0, 0.06);
+        --rk-colors-actionButtonSecondaryBackground: rgba(0, 0, 0, 0.06);
+        --rk-colors-closeButton: rgba(60, 66, 66, 0.8);
+        --rk-colors-closeButtonBackground: rgba(0, 0, 0, 0.06);
+        --rk-colors-connectButtonBackground: #FFF;
+        --rk-colors-connectButtonBackgroundError: #FF494A;
+        --rk-colors-connectButtonInnerBackground: linear-gradient(0deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
+        --rk-colors-connectButtonText: #25292E;
+        --rk-colors-connectButtonTextError: #FFF;
+        --rk-colors-connectionIndicator: #30E000;
+        --rk-colors-downloadBottomCardBackground: linear-gradient(126deg, rgba(255, 255, 255, 0) 9.49%, rgba(171, 171, 171, 0.04) 71.04%), #FFFFFF;
+        --rk-colors-downloadTopCardBackground: linear-gradient(126deg, rgba(171, 171, 171, 0.2) 9.49%, rgba(255, 255, 255, 0) 71.04%), #FFFFFF;
+        --rk-colors-error: #FF494A;
+        --rk-colors-generalBorder: rgba(0, 0, 0, 0.06);
+        --rk-colors-generalBorderDim: rgba(0, 0, 0, 0.03);
+        --rk-colors-menuItemBackground: rgba(60, 66, 66, 0.1);
+        --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.3);
+        --rk-colors-modalBackground: #FFF;
+        --rk-colors-modalBorder: transparent;
+        --rk-colors-modalText: #25292E;
+        --rk-colors-modalTextDim: rgba(60, 66, 66, 0.3);
+        --rk-colors-modalTextSecondary: rgba(60, 66, 66, 0.6);
+        --rk-colors-profileAction: #FFF;
+        --rk-colors-profileActionHover: rgba(255, 255, 255, 0.5);
+        --rk-colors-profileForeground: rgba(60, 66, 66, 0.06);
+        --rk-colors-selectedOptionBorder: rgba(60, 66, 66, 0.1);
+        --rk-colors-standby: #FFD641;
+        --rk-shadows-connectButton: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        --rk-shadows-dialog: 0px 8px 32px rgba(0, 0, 0, 0.32);
+        --rk-shadows-profileDetailsAction: 0px 2px 6px rgba(37, 41, 46, 0.04);
+        --rk-shadows-selectedOption: 0px 2px 6px rgba(0, 0, 0, 0.24);
+        --rk-shadows-selectedWallet: 0px 2px 6px rgba(0, 0, 0, 0.12);
+        --rk-shadows-walletLogo: 0px 2px 16px rgba(0, 0, 0, 0.16);
+      }
+
+      .tw-dark {
+        --rk-colors-accentColor: #3898FF;
+        --rk-colors-actionButtonBorder: rgba(255, 255, 255, 0.04);
+        --rk-colors-actionButtonBorderMobile: rgba(255, 255, 255, 0.08);
+        --rk-colors-actionButtonSecondaryBackground: rgba(255, 255, 255, 0.08);
+        --rk-colors-closeButton: rgba(224, 232, 255, 0.6);
+        --rk-colors-closeButtonBackground: rgba(255, 255, 255, 0.08);
+        --rk-colors-connectButtonBackground: #1A1B1F;
+        --rk-colors-connectButtonInnerBackground: linear-gradient(0deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.15));
+        --rk-colors-connectButtonText: #FFF;
+        --rk-colors-downloadBottomCardBackground: linear-gradient(126deg, rgba(0, 0, 0, 0) 9.49%, rgba(120, 120, 120, 0.2) 71.04%), #1A1B1F;
+        --rk-colors-downloadTopCardBackground: linear-gradient(126deg, rgba(120, 120, 120, 0.2) 9.49%, rgba(0, 0, 0, 0) 71.04%), #1A1B1F;
+        --rk-colors-generalBorder: rgba(255, 255, 255, 0.08);
+        --rk-colors-generalBorderDim: rgba(255, 255, 255, 0.04);
+        --rk-colors-menuItemBackground: rgba(224, 232, 255, 0.1);
+        --rk-colors-modalBackdrop: rgba(0, 0, 0, 0.5);
+        --rk-colors-modalBackground: #1A1B1F;
+        --rk-colors-modalBorder: rgba(255, 255, 255, 0.08);
+        --rk-colors-modalText: #FFF;
+        --rk-colors-modalTextDim: rgba(224, 232, 255, 0.3);
+        --rk-colors-modalTextSecondary: rgba(255, 255, 255, 0.6);
+        --rk-colors-profileAction: rgba(224, 232, 255, 0.1);
+        --rk-colors-profileActionHover: rgba(224, 232, 255, 0.2);
+        --rk-colors-profileForeground: rgba(224, 232, 255, 0.05);
+        --rk-colors-selectedOptionBorder: rgba(224, 232, 255, 0.1);
+        --rk-shadows-selectedWallet: 0px 2px 6px rgba(0, 0, 0, 0.24);
+      }
+
+      /* Suppress react-remove-scroll behaviour */
+      body[data-scroll-locked] {
+        margin-right: 0 !important;
+        overflow: auto !important;
+      }
+    </style>
+    <nav class="tw-z-20" data-headlessui-state="">
+      <div class="tw-mx-auto tw-p-4">
+        <div class="tw-flex tw-justify-between">
+          <div class="tw-mx-2 tw-flex tw-items-center tw-gap-3 xl:tw-hidden"><button
+              class="tw-inline-flex tw-items-center tw-justify-center tw-p-2 tw-rounded-2xl focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-medium"
+              id="headlessui-disclosure-button-:R4kl2m:" type="button" aria-expanded="false"
+              data-headlessui-state=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
+                class="tw-block tw-h-7 tw-w-7 tw-text-blue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25">
+                </path>
+              </svg></button><button aria-label="Switch theme"
+              class="centering-container tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue dark:focus:tw-ring-blue-medium tw-p-1"><svg
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                data-slot="icon" class="tw-w-4 tw-h-4 hover:tw-text-blue-sea-light">
+                <path fill-rule="evenodd"
+                  d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                  clip-rule="evenodd"></path>
+              </svg></button></div>
+          <div class="tw-flex tw-items-center tw-flex-shrink-0 xl:tw-hidden"><a class="tw-select-none" href="/"><img
+                alt="dHEDGE Logo" loading="lazy" width="200" height="40" decoding="async" data-nimg="1"
+                class="tw-h-5 tw-w-auto" style="color:transparent"
+                srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdhedge_logo.2ddbb44a.png&amp;w=256&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdhedge_logo.2ddbb44a.png&amp;w=640&amp;q=75 2x"
+                src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdhedge_logo.2ddbb44a.png&amp;w=640&amp;q=75" /></a>
+          </div>
+          <div class="tw-hidden xl:tw-flex sm:tw-items-stretch sm:tw-justify-start tw-items-center tw-justify-center">
+            <div class="tw-mr-10 tw-hidden xl:tw-block tw-flex-shrink-0"><a
+                class="tw-h-full tw-flex tw-flex-1 tw-items-center tw-select-none" href="/"><img alt="dHEDGE Logo"
+                  loading="lazy" width="200" height="40" decoding="async" data-nimg="1"
+                  class="tw-h-5 tw-w-auto tw-align-middle" style="color:transparent"
+                  srcSet="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdhedge_logo.2ddbb44a.png&amp;w=256&amp;q=75 1x, /_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdhedge_logo.2ddbb44a.png&amp;w=640&amp;q=75 2x"
+                  src="/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdhedge_logo.2ddbb44a.png&amp;w=640&amp;q=75" /></a>
+            </div>
+            <div class="tw-flex tw-items-center tw-mx-2">
+              <div class="tw-flex md:tw-gap-4 lg:tw-gap-8 tw-select-none tw-font-medium"><a
+                  class="tw-py-1.5 tw-flex tw-items-center tw-whitespace-nowrap tw-text-sm tw-font-semibold tw-text-black-dark dark:tw-text-white focus:tw-text-black-dark dark:focus:tw-text-white "
+                  href="/explore">Explore</a><a
+                  class="tw-py-1.5 tw-flex tw-items-center tw-whitespace-nowrap tw-text-sm tw-font-semibold tw-text-black-dark dark:tw-text-white focus:tw-text-black-dark dark:focus:tw-text-white "
+                  href="/dashboard">My Deposits</a><a
+                  class="tw-py-1.5 tw-flex tw-items-center tw-whitespace-nowrap tw-text-sm tw-font-semibold tw-text-black-dark dark:tw-text-white focus:tw-text-black-dark dark:focus:tw-text-white "
+                  href="/management">Manage</a><a
+                  class="tw-py-1.5 tw-flex tw-items-center tw-whitespace-nowrap tw-text-sm tw-font-semibold tw-text-black-dark dark:tw-text-white focus:tw-text-black-dark dark:focus:tw-text-white "
+                  href="/dht/governance">DHT Holders</a><a
+                  class="tw-py-1.5 tw-flex tw-items-center tw-whitespace-nowrap tw-text-sm tw-font-semibold tw-text-black-dark dark:tw-text-white focus:tw-text-black-dark dark:focus:tw-text-white "
+                  href="/analytics">Stats</a></div>
+              <div class="tw-ml-8"><button aria-label="Switch theme"
+                  class="centering-container tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue dark:focus:tw-ring-blue-medium tw-p-1"><svg
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                    data-slot="icon" class="tw-w-4 tw-h-4 hover:tw-text-blue-sea-light">
+                    <path fill-rule="evenodd"
+                      d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                      clip-rule="evenodd"></path>
+                  </svg></button></div>
+            </div>
+          </div>
+          <div class="tw-hidden sm:tw-flex tw-items-center sm:tw-pr-0 tw-ml-auto">
+            <div class="tw-flex tw-flex-row tw-gap-3"><button id="connect_wallet_button"
+                class="tw-text-white dark:tw-text-white hover:tw-text-white tw-bg-gradient-to-r tw-from-blue tw-bg-blue-light hover:tw-bg-blue tw-text-shadow-blue tw-font-bold tw-px-6 tw-py-2  tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+                type="button">Connect Wallet</button></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="tw-bg-transparent tw-z-10 tw-flex-auto tw-container tw-mx-auto">
+      <section class="tw-relative container-max-limit">
+        <div class="tw-flex tw-justify-between"><button
+            class="tw-font-normal tw-text-blue dark:tw-text-blue hover:tw-text-blue-medium dark:hover:tw-text-blue-medium   tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+            type="button"><span
+              class="tw-text-black-dark dark:tw-text-white hover:tw-text-grey-dark dark:hover:tw-text-grey"><svg
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" aria-hidden="true" data-slot="icon" class="tw-h-4 tw-inline-flex tw-mr-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
+              </svg>Back</span></button><button
+            class="tw-font-normal tw-text-blue dark:tw-text-blue hover:tw-text-blue-medium dark:hover:tw-text-blue-medium   tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+            type="button"><span
+              class="tw-text-black-dark dark:tw-text-white hover:tw-text-grey-dark dark:hover:tw-text-grey">Give
+              Feedback <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" aria-hidden="true" data-slot="icon"
+                class="tw-inline-block tw-h-4 tw-w-4 tw-align-text-top">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z">
+                </path>
+              </svg></span></button></div>
+        <div class="tw-mb-4 tw-z-10">
+          <div class="tw-flex tw-flex-row tw-items-start tw-gap-1">
+            <header class="tw-mt-4 tw-mb-6">
+              <h1 class="e-title--large">Alpha ∞/21<!-- -->
+                <div class="tw-inline-block "><span
+                    class="tw-bg-white dark:tw-bg-black-dark tw-rounded-full tw-inline-flex tw-justify-center tw-items-center tw-h-10 tw-w-10 tw-mr-3"
+                    id="pool_title"><img alt="8453 icon" loading="lazy" width="24" height="24" decoding="async"
+                      data-nimg="1" class="tw-inline-block tw-w-6 tw-h-6 undefined" style="color:transparent"
+                      src="/_next/static/media/base_logo.cec4fb8a.svg" /></span></div>
+              </h1><span class="tw-flex tw-mt-4 tw-gap-2 tw-flex-wrap"></span>
+            </header>
+          </div>
+          <div class="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-6">
+            <div id="pool_manager_info" class="tw-flex tw-gap-6 tw-flex-row ">
+              <div class="tw-relative">
+                <div>
+                  <div class="tw-select-none tw-relative" style="width:60px;height:60px">
+                    <div class="paper"
+                      style="border-radius:50px;display:inline-block;margin:0;overflow:hidden;padding:0;background-color:#c7146e;height:60px;width:60px">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0" height="60" width="60">
+                        <rect x="0" y="0" rx="0" ry="0" height="60" width="60"
+                          transform="translate(-10.526146791106978 -1.6780441600164067) rotate(283.1 30 30)"
+                          fill="#15c3f2"></rect>
+                        <rect x="0" y="0" rx="0" ry="0" height="60" width="60"
+                          transform="translate(24.679532983372603 10.362846076376215) rotate(65.8 30 30)"
+                          fill="#fc4600"></rect>
+                        <rect x="0" y="0" rx="0" ry="0" height="60" width="60"
+                          transform="translate(-28.934434902163705 -34.37510201318544) rotate(393.4 30 30)"
+                          fill="#248ae1"></rect>
+                        <rect x="0" y="0" rx="0" ry="0" height="60" width="60"
+                          transform="translate(60.65885399165652 -11.147288331233588) rotate(462.6 30 30)"
+                          fill="#f39500"></rect>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="e-title--small tw-mb-1">Managed by<!-- --> <a
+                    class="tw-text-black-dark dark:tw-text-white tw-underline"
+                    href="/user/0x0b0519e7d620f7768f14a2791b5dbe1044e8e5b6">CyberRhass</a></h3>
+                <div class="tw-text-grey-medium dark:tw-text-grey tw-text-sm"></div>
+                <div class="tw-text-grey-medium dark:tw-text-grey tw-text-sm">Holds<span
+                    class="tw-text-red tw-mx-1">0%</span>of the vault</div>
+              </div>
+            </div>
+            <div class="lg:tw-col-span-2">
+              <div id="pool_stats">
+                <dl
+                  class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-4 tw-bg-white tw-shadow tw-border-t tw-border-t-white/10 dark:tw-bg-black-dark tw-rounded-2xl tw-px-2 tw-py-4 lg:tw-divide-x lg:tw-divide-grey lg:dark:tw-divide-black-light lg:tw-divide-solid tw-mb-2">
+                  <div
+                    class="tw-px-2 lg:tw-px-5 tw-text-black-dark dark:tw-text-white tw-font-semibold tw-text-2xl lg:tw-justify-center tw-flex tw-items-center">
+                    $1.051</div>
+                  <div class="tw-px-2 lg:tw-px-5">
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-medium">3M Return<div
+                        class="tw-inline-block ">
+                        <div
+                          class="tw-border tw-inline-flex tw-justify-center tw-cursor-pointer tw-items-center tw-ml-1 tw-border-grey dark:tw-border-white-semitransparent tw-text-xs tw-font-semi-bold tw-border-solid tw-w-5 tw-h-5 tw-rounded-full tw-select-none tw-ml-1 tw-align-middle">
+                          ?</div>
+                      </div>
+                    </dt>
+                    <dd class="tw-text-xl tw-font-bold tw-mt-0.5 tw-mb-2 tw-text-black-dark dark:tw-text-white"
+                      style="color:#C0392B">-2.88%</dd>
+                  </div>
+                  <div class="tw-px-2 lg:tw-px-5">
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-medium">Value Managed</dt>
+                    <dd class="tw-text-xl tw-font-bold tw-mt-0.5 tw-mb-2 tw-text-black-dark dark:tw-text-white">$6.25M
+                    </dd>
+                  </div>
+                </dl>
+                <dl class="tw-flex tw-flex-row tw-gap-3 lg:tw-gap-5 tw-px-4 tw-flex-wrap tw-mb-0 tw-pt-1">
+                  <div class="tw-flex tw-flex-row tw-flex-wrap tw-gap-1 tw-items-center">
+                    <div class="tw-inline-flex tw-text-black-dark dark:tw-text-white tw-text-sm tw-font-semibold">
+                      Managed<div class="tw-inline-block ">
+                        <div
+                          class="tw-border tw-inline-flex tw-justify-center tw-cursor-pointer tw-items-center tw-ml-1 tw-border-grey dark:tw-border-white-semitransparent tw-text-xs tw-font-semi-bold tw-border-solid tw-w-5 tw-h-5 tw-rounded-full tw-select-none undefined">
+                          ?</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tw-flex tw-flex-row tw-flex-wrap tw-gap-1 tw-items-center"><span
+                      class="tw-text-grey-medium dark:tw-text-grey tw-text-sm">Risk Factor<div class="tw-inline-block ">
+                        <div
+                          class="tw-border tw-inline-flex tw-justify-center tw-cursor-pointer tw-items-center tw-ml-1 tw-border-grey dark:tw-border-white-semitransparent tw-text-xs tw-font-semi-bold tw-border-solid tw-w-5 tw-h-5 tw-rounded-full tw-select-none tw-ml-1">
+                          ?</div>
+                      </div></span>
+                    <div class="tw-inline-flex tw-text-black-dark dark:tw-text-white tw-text-sm tw-font-semibold"
+                      style="color:#27AE60">2 / 5</div>
+                  </div>
+                  <div class="tw-flex tw-flex-row tw-flex-wrap tw-gap-1 tw-items-center"><span
+                      class="tw-text-grey-medium dark:tw-text-grey tw-text-sm">Unique Depositors</span>
+                    <div class="tw-inline-flex tw-text-black-dark dark:tw-text-white tw-text-sm tw-font-semibold">
+                      <div class="tw-flex tw-items-center tw-w-full">
+                        <div class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                        </div><span class="tw-invisible tw-w-0">Loader</span>
+                      </div>
+                    </div>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tw-mb-8 tw-flex tw-flex-col-reverse lg:tw-flex-row tw-flex-wrap lg:tw-flex-nowrap tw-gap-2">
+          <div class="tw-w-full lg:tw-w-3/5 tw-flex-shrink-0 tw-flex tw-flex-col-reverse lg:tw-flex-col tw-gap-2">
+            <div class="tw-mt-4 lg:tw-mt-0">
+              <div id="pool_chart" style="min-height:0" class="tw-h-full tw-flex tw-flex-col">
+                <div class="tw-flex tw-mb-4">
+                  <div
+                    class="tw-flex tw-flex-row tw-rounded-full tw-bg-white dark:tw-bg-black-dark tw-p-1 tw-gap-2 tw-select-none">
+                    <button type="button"
+                      class="centering-container tw-px-2.5 tw-py-1.5 sm:tw-px-6 sm:tw-py-2 tw-text-sm tw-rounded-full focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-text-black-dark dark:tw-text-white tw-bg-white-dark dark:tw-bg-black-light hover:tw-bg-white-dark dark:hover:tw-bg-black-light ">
+                      <div class="tw-flex tw-items-center tw-gap-0.5">Performance</div>
+                    </button><button type="button"
+                      class="centering-container tw-px-2.5 tw-py-1.5 sm:tw-px-6 sm:tw-py-2 tw-text-sm tw-rounded-full focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-text-grey-dark dark:tw-text-grey hover:tw-bg-white-dark dark:hover:tw-bg-black-medium ">
+                      <div class="tw-flex tw-items-center tw-gap-0.5">Trading View<span
+                          class="tw-inline-flex tw-align-top
+    tw-px-0.5 tw-text-xxs tw-rounded-full tw-backdrop-blur tw-font-medium tw-border tw-border-opacity-10 tw-text-opacity-100 tw-border-black tw-text-black 
+    dark:tw-border-white/30 dark:tw-text-white tw-bg-white-dark tw-bg-opacity-60 dark:tw-bg-opacity-10 dark:tw-bg-grey">New</span></div>
+                    </button><button type="button"
+                      class="centering-container tw-px-2.5 tw-py-1.5 sm:tw-px-6 sm:tw-py-2 tw-text-sm tw-rounded-full focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-text-grey-dark dark:tw-text-grey hover:tw-bg-white-dark dark:hover:tw-bg-black-medium ">
+                      <div class="tw-flex tw-items-center tw-gap-0.5">Value Managed</div>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="tw-rounded-2xl tw-shadow tw-border-t tw-border-t-white/10 tw-bg-white dark:tw-bg-black-dark tw-flex tw-flex-col tw-justify-between tw-h-full tw-py-4 lg:tw-py-6">
+                  <div class="tw-px-4 lg:tw-px-6">
+                    <div class="tw-flex tw-flex-wrap tw-justify-between tw-gap-4">
+                      <div class="tw-flex tw-gap-5">
+                        <div class="tw-relative tw-z-10" data-headlessui-state=""><button
+                            class="tw-rounded-full focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue dark:focus:tw-ring-blue-medium"
+                            type="button" aria-expanded="false" data-headlessui-state=""><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-w-7 tw-h-7 tw-cursor-pointer tw-text-grey-medium dark:tw-text-grey tw-transition tw-duration-500 tw-transform hover:dark:tw-text-white hover:tw-text-black">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5">
+                              </path>
+                            </svg></button></div>
+                        <div hidden=""
+                          style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none">
+                        </div>
+                        <div class="tw-flex tw-gap-5" id="chart_checkboxes">
+                          <div class="tw-flex tw-gap-1 tw-text-grey-medium dark:tw-text-grey tw-font-semibold"><label
+                              for="ethereum" class="tw-capitalize"><input id="ethereum" name="ethereum" type="checkbox"
+                                class="tw-mr-1 tw-inline-flex tw-appearance-none tw-border dark:tw-border-white dark:tw-border-opacity-30 tw-rounded-lg focus:tw-outline-none tw-transition tw-duration-200 "
+                                style="color:#8E44AD" value="ethereum" />ethereum</label></div>
+                          <div class="tw-flex tw-gap-1 tw-text-grey-medium dark:tw-text-grey tw-font-semibold"><label
+                              for="bitcoin" class="tw-capitalize"><input id="bitcoin" name="bitcoin" type="checkbox"
+                                class="tw-mr-1 tw-inline-flex tw-appearance-none tw-border dark:tw-border-white dark:tw-border-opacity-30 tw-rounded-lg focus:tw-outline-none tw-transition tw-duration-200 "
+                                style="color:#E67E22" value="bitcoin" />bitcoin</label></div>
+                        </div>
+                      </div>
+                      <div class="tw-mt-2 md:tw-mt-0">
+                        <div class="tw-flex tw-rounded-full tw-gap-6 "><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"><span
+                              class="tw-text-grey-medium dark:tw-text-grey tw-font-medium hover:tw-text-grey-dark dark:hover:tw-text-white"><span
+                                class="tw-uppercase">1d</span></span></button><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"><span
+                              class="tw-text-grey-medium dark:tw-text-grey tw-font-medium hover:tw-text-grey-dark dark:hover:tw-text-white"><span
+                                class="tw-uppercase">1w</span></span></button><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"><span
+                              class="tw-text-black-dark dark:tw-text-white tw-font-bold"><span
+                                class="tw-uppercase">1m</span></span></button><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"><span
+                              class="tw-text-grey-medium dark:tw-text-grey tw-font-medium hover:tw-text-grey-dark dark:hover:tw-text-white"><span
+                                class="tw-uppercase">3m</span></span></button><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"><span
+                              class="tw-text-grey-medium dark:tw-text-grey tw-font-medium hover:tw-text-grey-dark dark:hover:tw-text-white"><span
+                                class="tw-uppercase">6m</span></span></button><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"
+                            disabled=""><span
+                              class="tw-text-grey-medium dark:tw-text-grey tw-font-medium hover:tw-text-grey-dark dark:hover:tw-text-white"><span
+                                class="tw-uppercase">1y</span></span></button><button type="button"
+                            class="centering-container tw-text-sm tw-rounded focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-offset-4 focus:tw-ring-offset-white-medium dark:focus:tw-ring-offset-black-dark focus:tw-ring-blue dark:focus:tw-ring-blue-medium focus:tw-z-10 disabled:tw-cursor-not-allowed disabled:tw-opacity-50"><span
+                              class="tw-text-grey-medium dark:tw-text-grey tw-font-medium hover:tw-text-grey-dark dark:hover:tw-text-white"><span
+                                class="tw-uppercase">all</span></span></button></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tw-mt-6 md:tw-mt-2">
+                    <div class="chart-loader-container"><img alt="chart-skeleton" fetchpriority="high" width="1000"
+                        height="1000" decoding="async" data-nimg="1"
+                        class="tw-select-none tw-animate-pulse tw-hidden dark:tw-block "
+                        style="color:transparent;aspect-ratio:3"
+                        src="/_next/static/media/chart_skeleton_dark.2b9ff297.svg" /><img alt="chart-skeleton"
+                        fetchpriority="high" width="1000" height="1000" decoding="async" data-nimg="1"
+                        class="tw-select-none tw-animate-pulse dark:tw-hidden " style="color:transparent;aspect-ratio:3"
+                        src="/_next/static/media/chart_skeleton_light.e5be52a0.svg" /></div>
+                  </div>
+                  <div
+                    class="tw-pt-2 tw-px-6 tw-flex-shrink-0 md:tw-mt-0 tw-grid tw-grid-cols-2 sm:tw-grid-cols-3 md:tw-grid-cols-9 lg:tw-grid-cols-6 xl:tw-grid-cols-9 tw-gap-2">
+                    <div
+                      class="tw-order-first tw-col-span-2 sm:tw-col-span-3 lg:tw-col-span-6 xl:tw-order-first lg:tw-order-7  xl:tw-col-span-3">
+                      <dl>
+                        <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Creation
+                          Date<!-- -->:</dt>
+                        <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">Jul 3, 2025
+                        </dd>
+                      </dl>
+                    </div>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">1 Day<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium"><span
+                          style="color:#27AE60">+0.2%</span></dd>
+                    </dl>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">1 Week<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium"><span
+                          style="color:#C0392B">-0.4%</span></dd>
+                    </dl>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">1 Month<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium"><span
+                          style="color:#C0392B">-0.1%</span></dd>
+                    </dl>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">6 Month<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium"><span
+                          style="color:#27AE60"></span></dd>
+                    </dl>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">1 Year<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium"><span
+                          style="color:#27AE60"></span></dd>
+                    </dl>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">All<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium"><span
+                          style="color:#27AE60">+5.1%</span></dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tw-px-6 tw-py-4 tw-flex tw-flex-wrap tw-shadow tw-border-t tw-border-t-white/10 tw-justify-between xl:tw-justify-start tw-gap-4 xl:tw-gap-x-10 tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl">
+              <div id="pool_user_panel">
+                <h4 class="e-title--extra-small tw-mb-2">Your Share</h4>
+                <div class="tw-flex tw-gap-2 xl:tw-gap-4">
+                  <dl>
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Your Balance<!-- -->:
+                    </dt>
+                    <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">$0</dd>
+                  </dl>
+                  <dl>
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Profit/Loss<!-- -->:
+                    </dt>
+                    <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">-</dd>
+                  </dl>
+                </div>
+              </div>
+              <div>
+                <h4 class="e-title--extra-small tw-mb-2">Fee Structure</h4>
+                <div class="tw-flex tw-gap-2 xl:tw-gap-4 tw-flex-wrap md:tw-flex-nowrap">
+                  <div>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Entry<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">
+                        <div class="tw-flex tw-flex-row tw-items-baseline">0%</div>
+                      </dd>
+                    </dl>
+                  </div>
+                  <div>
+                    <dl>
+                      <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Exit<!-- -->:</dt>
+                      <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">
+                        <div class="tw-flex tw-flex-row tw-items-baseline">0%</div>
+                      </dd>
+                    </dl>
+                  </div>
+                  <dl>
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Performance<!-- -->:
+                    </dt>
+                    <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">
+                      <div class="tw-flex tw-flex-row tw-items-baseline">5%</div>
+                    </dd>
+                  </dl>
+                  <dl>
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Management<!-- -->:</dt>
+                    <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">
+                      <div class="tw-flex tw-flex-row tw-items-baseline">3%<div class="tw-inline-block ">
+                          <div
+                            class="tw-border tw-inline-flex tw-justify-center tw-cursor-pointer tw-items-center tw-ml-1 tw-border-grey dark:tw-border-white-semitransparent tw-text-xs tw-font-semi-bold tw-border-solid tw-w-5 tw-h-5 tw-rounded-full tw-select-none tw-align-text-bottom">
+                            ?</div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                </div>
+                <h4
+                  class="tw-my-2 tw-pt-2 e-title--extra-small tw-border-t tw-border-solid tw-border-grey dark:tw-border-black-light">
+                  Referrals<!-- --> </h4>
+                <div class="tw-flex tw-flex-row tw-gap-2 xl:tw-gap-4">
+                  <dl>
+                    <dt class="tw-text-grey-medium dark:tw-text-grey tw-text-sm tw-font-normal">Share of management
+                      fees<!-- -->:</dt>
+                    <dd class="tw-mt-1 tw-text-black-dark dark:tw-text-white tw-text-lg tw-font-medium">
+                      <div class="tw-flex tw-items-center">33<!-- -->%<div class="tw-inline-block ">
+                          <div
+                            class="tw-border tw-inline-flex tw-justify-center tw-cursor-pointer tw-items-center tw-ml-1 tw-border-grey dark:tw-border-white-semitransparent tw-text-xs tw-font-semi-bold tw-border-solid tw-w-5 tw-h-5 tw-rounded-full tw-select-none tw-align-text-bottom">
+                            ?</div>
+                        </div>
+                      </div>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tw-w-full lg:tw-w-2/5 lg:tw-pt-12">
+            <div class="trading-widget tw-h-full tw-relative tw-mt-3 tw-mx-auto tw-max-w-lg" id="pool_invest">
+              <div
+                class="tw-shadow !tw-border-t !tw-border-t-white/10 tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl">
+                <div
+                  style="--panel-radius: 16px; --panel-radius-secondary: 9999px; --panel-background-color: #202428; --panel-gap: 0.25rem; --panel-spacer: 4px; --panel-content-color: #ffffff; --panel-content-hover-color: #ffffffCC; --panel-secondary-color: #2B313E; --panel-secondary-content-color: #9DA2AD; --panel-accent-from-color: #5DADE2; --panel-accent-to-color: #34855E; --panel-accent-hover-from-color: #73D393CC; --panel-accent-hover-to-color: #162435; --panel-accent-content-color: #5DADE2; --panel-accent-content-hover-color: #ffffffCC; --panel-neutral-color: #9DA2AD33; --panel-neutral-content-color: #9DA2AD80; --panel-loading-content-color: #ffffff99; --panel-error-content-color: #EF4444; --panel-warning-content-color: #fbbf24; --panel-success-content-color: #73D393; --panel-border-color: var(--panel-content-color); --widget-radius: var(--panel-radius); --widget-radius-md: var(--panel-radius); --panel-divider-color: var(--panel-secondary-content-color); --panel-scrollbar-color: #73D39380; --panel-font-size: 16px; --panel-line-height: 24px; --panel-font-size-lg: 18px; --panel-line-height-lg: 28px; --panel-font-size-sm: 14px; --panel-line-height-sm: 20px; --panel-font-size-xs: 12px; --panel-line-height-xs: 16px; --panel-font-weight-light: 300; --panel-font-weight-medium: 500; --panel-font-weight-bold: 700; --panel-action-opacity: 1; --panel-action-hover-opacity: 0.8; --panel-label-font-size: var(--panel-font-size); --panel-label-line-height: var(--panel-line-height-xs); --panel-icon-size: 20px; --panel-icon-size-sm: 24px; --panel-icon-secondary-size: 16px; --panel-icon-secondary-size-sm: 16px; --panel-icon-color: var(--panel-content-color); --panel-icon-color-hover: var(--panel-content-hover-color); --panel-notification-bg: #35393f; --panel-popup-content-color: var(--panel-secondary-content-color); --panel-popup-bg: #202428; --panel-popup-border-color: var(--panel-secondary-content-color); --panel-popup-font-size: 12px; --panel-popup-list-header-bg: #2C3E50; --panel-popup-list-item-bg-even: transparent; --panel-popup-list-item-bg-odd: #2b2e33; --panel-tab-group-px: calc(var(--panel-spacer) * 6); --panel-tab-list-bg: #2b2e33; --panel-tab-list-px: calc(var(--panel-spacer) * 3); --panel-tab-list-py: calc(var(--panel-spacer) * 2); --panel-tab-list-radius: var(--panel-radius-secondary); --panel-content-pt: calc(var(--panel-spacer) * 2); --panel-content-pb: calc(var(--panel-spacer) * 9); --panel-content-pb-md: var(--panel-content-pb); --panel-content-px: 0px; --panel-content-gap: calc(var(--panel-gap) * 2); --panel-tab-px: calc(var(--panel-spacer) * 9); --panel-tab-py: 8px; --panel-tab-bg: var(--panel-neutral-color); --panel-tab-content-color: #fdfdfd; --panel-tab-select-content-color: var(--panel-content-color); --panel-tab-hover-content-color: var(--panel-content-hover-color); --panel-tab-font-size: var(--panel-font-size-sm); --panel-tab-font-weight: var(--panel-font-weight-medium); --panel-tab-line-height: var(--panel-line-height-sm); --panel-balance-group-px: calc(var(--panel-spacer) * 6); --panel-balance-group-gap: var(--panel-gap); --panel-balance-content-color: var(--panel-secondary-content-color); --panel-balance-price-content-color: var(--panel-secondary-content-color); --panel-balance-font-size: var(--panel-font-size-xs); --panel-balance-line-height: var(--panel-line-height-xs); --panel-balance-price-font-size: var(--panel-font-size); --panel-balance-price-line-height: var(--panel-line-height); --panel-inputs-group-gap: 8px; --panel-inputs-group-px: calc(var(--panel-spacer) * 6); --panel-inputs-group-px-arrow: var(--panel-spacer); --panel-inputs-group-py-arrow: var(--panel-spacer); --panel-inputs-group-arrow-size: var(--panel-input-token-icon-size); --panel-inputs-arrow-bg: var(--panel-input-bg); --panel-inputs-arrow-color: var(--panel-input-content-color); --panel-inputs-arrow-border-color: var(--panel-input-border-color); --panel-inputs-arrow-radius: 4px; --panel-input-radius: 16px; --panel-input-group-gap: calc(var(--panel-gap) * 2); --panel-input-px: calc(var(--panel-spacer) * 3); --panel-input-py: calc(var(--panel-spacer) * 2); --panel-input-price-gap: calc(var(--panel-gap) * 2); --panel-input-token-icon-size: var(--panel-icon-size); --panel-input-token-icon-size-sm: var(--panel-icon-size-sm); --panel-input-content-color: var(--panel-content-color); --panel-input-loading-content-color: var(--panel-loading-content-color); --panel-input-bg: #2b2e33; --panel-input-focus-bg: transparent; --panel-input-border-color: #2b2e33; --panel-input-focus-border-color: var(--panel-content-color); --panel-input-placeholder-color: var(--panel-secondary-content-color); --panel-input-label-font-size: var(--panel-font-size-sm); --panel-input-label-line-height: var(--panel-line-height-sm); --panel-input-label-font-weight: var(--panel-font-weight-light); --panel-input-font-size: var(--panel-font-size-sm); --panel-input-line-height: var(--panel-line-height-sm); --panel-input-font-size-lg: var(--panel-font-size-lg); --panel-input-line-height-lg: var(--panel-line-height-lg); --panel-input-font-weight: var(--panel-font-weight-light); --panel-input-token-font-size: var(--panel-font-size-xs); --panel-input-token-line-height: var(--panel-line-height-xs); --panel-input-token-font-size-sm: var(--panel-font-size); --panel-input-token-line-height-sm: var(--panel-line-height); --panel-input-token-font-weight: var(--panel-font-weight-medium); --panel-input-button-radius: 9999px; --panel-input-button-px: calc(var(--panel-spacer) * 2); --panel-input-button-py: var(--panel-spacer); --panel-input-button-bg: #202428; --panel-input-button-border-color: #202428; --panel-input-button-content-color: var(--panel-content-color); --panel-input-button-font-size: var(--panel-font-size-xs); --panel-input-button-line-height: var(--panel-line-height-xs); --panel-action-accent-button-border-width: 1px; --panel-action-accent-button-bg-from: var(--panel-accent-from-color); --panel-action-accent-button-bg-to: var(--panel-accent-to-color); --panel-action-accent-button-hover-bg-from: var(--panel-accent-hover-from-color); --panel-action-accent-button-hover-bg-to: var(--panel-accent-hover-to-color); --panel-action-accent-button-border-color: var(--panel-accent-from-color); --panel-action-accent-button-color: var(--panel-accent-content-color); --panel-action-outline-button-border-color: #ffffff33; --panel-action-outline-button-border-hover-color: #ffffffCC; --panel-action-outline-button-color: var(--panel-content-color); --panel-meta-group-gap: var(--panel-gap); --panel-meta-group-px: calc(var(--panel-spacer) * 6); --panel-meta-link-color: var(--panel-accent-from-color); --panel-meta-hover-bg: var(--panel-neutral-color); --panel-meta-action-panel-bg: var(--panel-background-color); --panel-meta-font-size: var(--panel-font-size-xs); --panel-meta-line-height: var(--panel-line-height-xs); --panel-meta-emphasised-font-size: var(--panel-font-size-sm); --panel-meta-emphasised-line-height: var(--panel-line-height-sm); --panel-tooltip-bg: #12171F; --panel-tooltip-color: #ffffff; --panel-alert-error-bg: #dd376a4D; --panel-alert-warning-bg: #fbbf244D; --panel-alert-info-bg: #504c564D; --panel-alert-error-color: var(--panel-error-content-color); --panel-alert-warning-color: var(--panel-warning-content-color); --panel-alert-info-color: var(--panel-content-color); --panel-switch-bg-checked: #2C3E50; --panel-switch-bg: #4C505B; --panel-switch-thumb-bg-checked: #ffffff; --panel-switch-thumb-bg: #ffffff; --panel-checkbox-bg-checked: #4C505B; --panel-checkbox-bg: transparent; --panel-checkbox-border-color-checked: transparent; --panel-checkbox-border-color: #B1B6C1; --panel-checkbox-color: #EBEBF0; --panel-checkbox-size: 20px; --panel-checkbox-icon-size: 16px; --panel-checkbox-radius: 4px;">
+                  <div
+                    class="trading-widget dtw-relative dtw-pt-3 dtw-bg-[var(--panel-background-color)] dtw-text-[color:var(--panel-content-color)] dtw-rounded-[var(--widget-radius)] md:dtw-rounded-[var(--widget-radius-md)] dtw-overflow-hidden dtw-h-full">
+                    <div class="dtw-flex dtw-flex-col dtw-h-full">
+                      <div class="dtw-flex dtw-px-[var(--panel-tab-group-px)] dtw-justify-between dtw-items-center"
+                        role="tablist" aria-orientation="horizontal">
+                        <div
+                          class="dtw-bg-[var(--panel-tab-list-bg)] dtw-rounded-[var(--panel-tab-list-radius)] dtw-px-[var(--panel-tab-list-px)] dtw-py-[var(--panel-tab-list-py)]">
+                          <button
+                            class="dtw-relative dtw-text-[length:var(--panel-tab-font-size,var(--panel-font-size-sm))] dtw-px-[var(--panel-tab-px)] dtw-py-[var(--panel-tab-py)] dtw-font-[var(--panel-tab-font-weight,var(--panel-font-weight-bold))] !dtw-leading-[var(--panel-tab-line-height,var(--panel-line-height))] dtw-outline-0 !dtw-text-[color:var(--panel-tab-select-content-color,var(--panel-content-color))]"
+                            id="headlessui-tabs-tab-:re:" role="tab" type="button" aria-selected="true" tabindex="0"
+                            data-headlessui-state="selected" data-selected=""
+                            aria-controls="headlessui-tabs-panel-:r11:"><span>Buy</span>
+                            <div
+                              class="dtw-flex dtw-items-center dtw-justify-center dtw-absolute dtw-bottom-0 dtw-left-0 dtw-right-0 dtw-h-full dtw-rounded-[var(--panel-radius-secondary)] dtw-bg-[var(--panel-tab-bg,var(--panel-neutral-color))] dtw-shadow-md dtw-pointer-events-none">
+                              <span>Buy</span>
+                            </div>
+                          </button><button
+                            class="dtw-relative dtw-text-[length:var(--panel-tab-font-size,var(--panel-font-size-sm))] dtw-px-[var(--panel-tab-px)] dtw-py-[var(--panel-tab-py)] dtw-font-[var(--panel-tab-font-weight,var(--panel-font-weight-bold))] !dtw-leading-[var(--panel-tab-line-height,var(--panel-line-height))] dtw-outline-0 !dtw-text-[color:var(--panel-tab-content-color,var(--panel-neutral-content-color))] hover:dtw-text-[color:var(--panel-tab-hover-content-color,var(--panel-content-hover-color))]"
+                            id="headlessui-tabs-tab-:rg:" role="tab" type="button" aria-selected="false" tabindex="-1"
+                            data-headlessui-state=""
+                            aria-controls="headlessui-tabs-panel-:r14:"><span>Sell</span></button>
+                        </div>
+                        <div class="dtw-flex dtw-gap-2 dtw-items-center dtw-justify-end"><span>
+                            <div
+                              class="dtw-group dtw-w-fit dtw-cursor-pointer dtw-self-end dtw-rounded-lg dtw-p-1 hover:dtw-opacity-80 !dtw-self-center dtw-pointer-events-none">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true" data-slot="icon"
+                                class="dtw-text-[color:var(--panel-icon-color)] group-hover:dtw-text-[color:var(--panel-icon-color-hover))] dtw-h-[var(--panel-input-token-icon-size,var(--panel-icon-size))] dtw-w-[var(--panel-input-token-icon-size,var(--panel-icon-size))] sm:dtw-w-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))] sm:dtw-h-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))] dtw-opacity-50">
+                                <path fill-rule="evenodd"
+                                  d="M4.755 10.059a7.5 7.5 0 0 1 12.548-3.364l1.903 1.903h-3.183a.75.75 0 1 0 0 1.5h4.992a.75.75 0 0 0 .75-.75V4.356a.75.75 0 0 0-1.5 0v3.18l-1.9-1.9A9 9 0 0 0 3.306 9.67a.75.75 0 1 0 1.45.388Zm15.408 3.352a.75.75 0 0 0-.919.53 7.5 7.5 0 0 1-12.548 3.364l-1.902-1.903h3.183a.75.75 0 0 0 0-1.5H2.984a.75.75 0 0 0-.75.75v4.992a.75.75 0 0 0 1.5 0v-3.18l1.9 1.9a9 9 0 0 0 15.059-4.035.75.75 0 0 0-.53-.918Z"
+                                  clip-rule="evenodd"></path>
+                              </svg>
+                            </div>
+                          </span>
+                          <div>
+                            <div class="dtw-flex" role="tablist" aria-orientation="horizontal"><button
+                                class="dtw-hidden" id="headlessui-tabs-tab-:ri:" role="tab" type="button"
+                                aria-selected="true" tabindex="0" data-headlessui-state="selected" data-selected=""
+                                aria-controls="headlessui-tabs-panel-:rm:"></button><button class="dtw-hidden"
+                                id="headlessui-tabs-tab-:rk:" role="tab" type="button" aria-selected="false"
+                                tabindex="-1" data-headlessui-state=""
+                                aria-controls="headlessui-tabs-panel-:rv:"></button></div>
+                            <div>
+                              <div id="headlessui-tabs-panel-:rm:" role="tabpanel" tabindex="0"
+                                data-headlessui-state="selected" data-selected=""
+                                aria-labelledby="headlessui-tabs-tab-:ri:">
+                                <div class="dtw-flex dtw-items-center dtw-justify-end" data-headlessui-state=""><button
+                                    type="button" aria-expanded="false" data-headlessui-state=""
+                                    id="headlessui-popover-button-:rq:"><svg xmlns="http://www.w3.org/2000/svg"
+                                      fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                      aria-hidden="true" data-slot="icon"
+                                      class="dtw-h-[var(--panel-input-token-icon-size,var(--panel-icon-size))] dtw-w-[var(--panel-input-token-icon-size,var(--panel-icon-size))] sm:dtw-w-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))] sm:dtw-h-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))] hover:dtw-opacity-80 dtw-text-[color:var(--panel-icon-color,var(--panel-content-color))]">
+                                      <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z">
+                                      </path>
+                                      <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"></path>
+                                    </svg></button></div>
+                              </div><span aria-hidden="true" id="headlessui-tabs-panel-:rv:" role="tabpanel"
+                                tabindex="-1"
+                                style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px;"
+                                aria-labelledby="headlessui-tabs-tab-:rk:"></span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="dtw-flex-1 dtw-overflow-y-auto">
+                        <div
+                          class="dtw-pt-[var(--panel-content-pt)] dtw-pb-[var(--panel-content-pb)] md:dtw-pb-[var(--panel-content-pb-md)] dtw-px-[var(--panel-content-px)] dtw-flex dtw-flex-col dtw-gap-[var(--panel-content-gap,var(--panel-gap))] dtw-h-full"
+                          id="headlessui-tabs-panel-:r11:" role="tabpanel" tabindex="0" data-headlessui-state="selected"
+                          data-selected="" aria-labelledby="headlessui-tabs-tab-:re:">
+                          <div
+                            class="dtw-flex dtw-flex-col dtw-gap-[var(--panel-inputs-group-gap,var(--panel-gap))] dtw-px-[var(--panel-inputs-group-px)]">
+                            <div
+                              class="dtw-relative dtw-flex dtw-flex-col dtw-gap-[var(--panel-input-group-gap,var(--panel-gap))] dtw-rounded-[var(--panel-input-radius,var(--panel-radius))] dtw-border dtw-bg-[var(--panel-input-bg,var(--panel-neutral-color))] dtw-py-[var(--panel-input-py)] dtw-px-[var(--panel-input-px)] dtw-shadow-md focus-within:dtw-border-[var(--panel-input-focus-border-color)] focus-within:dtw-bg-[var(--panel-input-focus-bg)] dtw-border-[var(--panel-input-border-color)]">
+                              <span
+                                class="dtw-text-[color:var(--panel-secondary-content-color)] dtw-text-[length:var(--panel-label-font-size)] dtw-leading-[var(--panel-label-line-height,var(--panel-line-height-xs))]">Send</span>
+                              <div
+                                class="dtw-flex dtw-justify-between dtw-items-center dtw-text-[length:var(--panel-input-label-font-size,var(--panel-font-size-sm))] dtw-leading-[var(--panel-input-label-line-height,var(--panel-line-height-sm))] dtw-font-[var(--panel-input-label-font-weight,var(--panel-font-weight-light))] dtw-gap-x-2">
+                                <div class="transparent-scrollbar dtw-flex-1 dtw-overflow-x-auto"><input
+                                    class="dtw-appearance-none dtw-bg-transparent dtw-text-[color:var(--panel-input-content-color,var(--panel-content-color))] placeholder:dtw-text-[color:var(--panel-input-placeholder-color,var(--panel-secondary-content-color))] dtw-text-[length:var(--panel-input-font-size,var(--panel-font-size-sm))] !dtw-leading-[var(--panel-input-line-height,var(--panel-line-height-sm))] dtw-font-[var(--panel-input-font-weight,var(--panel-font-weight-light))] dtw-outline-none focus:dtw-outline-none lg:dtw-text-[length:var(--panel-input-font-size-lg,var(--panel-font-size-lg))] lg:dtw-leading-[var(--panel-input-line-height-lg,var(--panel-line-height-lg))] dtw-w-full"
+                                    type="number" min="0" placeholder="0" value=""></div><button
+                                  class="dtw-flex dtw-items-center dtw-gap-1 dtw-rounded-[var(--panel-input-button-radius,var(--panel-radius))] dtw-border dtw-border-[var(--panel-input-button-border-color,var(--panel-accent-to-color))] !dtw-bg-[var(--panel-input-button-bg,var(--panel-secondary-color))] dtw-px-[var(--panel-input-button-px)] dtw-py-[var(--panel-input-button-py)] hover:dtw-opacity-[var(--panel-action-hover-opacity)] dtw-opacity-[var(--panel-action-opacity)]">
+                                  <div class="dtw-flex dtw-w-full dtw-items-center dtw-space-x-1.5"><img
+                                      src="/_next/static/media/cbbtc.b7346622.png" alt="cbBTC icon"
+                                      class="!dtw-h-5 sm:!dtw-h-6  !dtw-w-5 sm:!dtw-w-6 dtw-flex-shrink-0" width="24"
+                                      height="24">
+                                    <div
+                                      class="dtw-font-[var(--panel-input-token-font-weight,var(--panel-font-weight-medium))] dtw-text-[length:var(--panel-input-token-font-size,var(--panel-font-size-xs))] dtw-line-height-[length:var(--panel-input-token-line-height,var(--panel-line-height-xs))] sm:dtw-text-[length:var(--panel-input-token-font-size-sm,var(--panel-font-size))] sm:dtw-leading-[var(--panel-input-token-line-height-sm,var(--panel-line-height))] dtw-text-[color:var(--panel-input-button-content-color)]"
+                                      title="cbBTC">cbBTC</div>
+                                  </div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    aria-hidden="true" data-slot="icon"
+                                    class="dtw-flex-shrink-0 dtw-text-[color:var(--panel-icon-color,var(--panel-content-color))] dtw-h-[var(--panel-input-token-icon-size,var(--panel-icon-size))] dtw-w-[var(--panel-input-token-icon-size,var(--panel-icon-size))] sm:dtw-w-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))] sm:dtw-h-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))]">
+                                    <path fill-rule="evenodd"
+                                      d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                      clip-rule="evenodd"></path>
+                                  </svg>
+                                </button>
+                              </div>
+                              <div class="dtw-flex dtw-items-center dtw-justify-between dtw-gap-x-2">
+                                <div
+                                  class="dtw-flex dtw-items-center dtw-gap-[var(--panel-input-price-gap,var(--panel-gap))] dtw-flex-1 dtw-overflow-x-auto transparent-scrollbar">
+                                  <input
+                                    class="dtw-appearance-none dtw-bg-transparent dtw-outline-none dtw-pointer-events-none dtw-flex-1 dtw-py-[1px] !dtw-text-[color:var(--panel-secondary-content-color)] dtw-text-[length:var(--panel-label-font-size)] !dtw-leading-[var(--panel-label-line-height,var(--panel-line-height-xs))]"
+                                    disabled="" value="$0.00">
+                                </div><span title="cbBTC"
+                                  class="dtw-text-[length:var(--panel-balance-font-size)] dtw-leading-[var(--panel-balance-line-height)] dtw-text-[color:var(--panel-balance-content-color)] dtw-whitespace-nowrap">0
+                                  cbBTC</span><button
+                                  class="dtw-cursor-pointer !dtw-text-[color:var(--panel-input-button-content-color,var(--panel-content-color))] dtw-rounded-[var(--panel-input-button-radius,var(--panel-radius))] !dtw-bg-[var(--panel-input-button-bg,var(--panel-secondary-color))] dtw-border dtw-border-[var(--panel-input-button-border-color,var(--panel-accent-to-color))] dtw-px-[var(--panel-input-button-px)] dtw-text-[length:var(--panel-input-button-font-size,var(--panel-font-size-xs))] dtw-leading-[var(--panel-input-button-line-height,var(--panel-line-height-xs))] hover:dtw-opacity-[var(--panel-action-hover-opacity)] dtw-opacity-[var(--panel-action-opacity)]">Max</button>
+                              </div>
+                            </div>
+                            <div
+                              class="dtw-relative dtw-flex dtw-flex-col dtw-gap-[var(--panel-input-group-gap,var(--panel-gap))] dtw-rounded-[var(--panel-input-radius,var(--panel-radius))] dtw-border dtw-bg-[var(--panel-input-bg,var(--panel-neutral-color))] dtw-py-[var(--panel-input-py)] dtw-px-[var(--panel-input-px)] dtw-shadow-md dtw-border-[var(--panel-input-border-color)]">
+                              <span
+                                class="dtw-text-[color:var(--panel-secondary-content-color)] dtw-text-[length:var(--panel-label-font-size)] dtw-leading-[var(--panel-label-line-height,var(--panel-line-height-xs))]">Receive
+                                (estimated)</span>
+                              <div
+                                class="dtw-flex dtw-justify-between dtw-items-center dtw-text-[length:var(--panel-input-label-font-size,var(--panel-font-size-sm))] dtw-leading-[var(--panel-input-label-line-height,var(--panel-line-height-sm))] dtw-font-[var(--panel-input-label-font-weight,var(--panel-font-weight-light))] dtw-gap-x-2">
+                                <div class="transparent-scrollbar dtw-flex-1 dtw-overflow-x-auto"><input
+                                    class="dtw-appearance-none dtw-bg-transparent dtw-text-[color:var(--panel-input-content-color,var(--panel-content-color))] placeholder:dtw-text-[color:var(--panel-input-placeholder-color,var(--panel-secondary-content-color))] dtw-text-[length:var(--panel-input-font-size,var(--panel-font-size-sm))] !dtw-leading-[var(--panel-input-line-height,var(--panel-line-height-sm))] dtw-font-[var(--panel-input-font-weight,var(--panel-font-weight-light))] dtw-outline-none focus:dtw-outline-none lg:dtw-text-[length:var(--panel-input-font-size-lg,var(--panel-font-size-lg))] lg:dtw-leading-[var(--panel-input-line-height-lg,var(--panel-line-height-lg))] dtw-w-full"
+                                    type="number" min="0" placeholder="0" disabled="" value=""></div><button
+                                  class="dtw-flex dtw-items-center dtw-gap-1 dtw-rounded-[var(--panel-input-button-radius,var(--panel-radius))] dtw-border dtw-border-[var(--panel-input-button-border-color,var(--panel-accent-to-color))] !dtw-bg-[var(--panel-input-button-bg,var(--panel-secondary-color))] dtw-px-[var(--panel-input-button-px)] dtw-py-[var(--panel-input-button-py)] hover:dtw-opacity-[var(--panel-action-hover-opacity)] dtw-opacity-[var(--panel-action-opacity)] dtw-pr-2 dtw-pointer-events-none"
+                                  disabled="">
+                                  <div class="dtw-flex dtw-w-full dtw-items-center dtw-space-x-1.5">
+                                    <div
+                                      class="dtw-font-[var(--panel-input-token-font-weight,var(--panel-font-weight-medium))] dtw-text-[length:var(--panel-input-token-font-size,var(--panel-font-size-xs))] dtw-line-height-[length:var(--panel-input-token-line-height,var(--panel-line-height-xs))] sm:dtw-text-[length:var(--panel-input-token-font-size-sm,var(--panel-font-size))] sm:dtw-leading-[var(--panel-input-token-line-height-sm,var(--panel-line-height))] dtw-text-[color:var(--panel-input-button-content-color)]"
+                                      title="aBTC">aBTC</div>
+                                  </div>
+                                </button>
+                              </div>
+                              <div class="dtw-flex dtw-items-center dtw-justify-between dtw-gap-x-2">
+                                <div
+                                  class="dtw-flex dtw-items-center dtw-gap-[var(--panel-input-price-gap,var(--panel-gap))] dtw-flex-1 dtw-overflow-x-auto transparent-scrollbar">
+                                  <input
+                                    class="dtw-appearance-none dtw-bg-transparent dtw-outline-none dtw-pointer-events-none dtw-flex-1 dtw-py-[1px] !dtw-text-[color:var(--panel-secondary-content-color)] dtw-text-[length:var(--panel-label-font-size)] !dtw-leading-[var(--panel-label-line-height,var(--panel-line-height-xs))]"
+                                    disabled="" value="$0.00">
+                                </div><span title="aBTC"
+                                  class="dtw-text-[length:var(--panel-balance-font-size)] dtw-leading-[var(--panel-balance-line-height)] dtw-text-[color:var(--panel-balance-content-color)] dtw-whitespace-nowrap">0
+                                  aBTC</span>
+                                <div
+                                  class="dtw-cursor-pointer dtw-group dtw-absolute dtw-left-1/2 -dtw-top-[calc(var(--panel-inputs-group-gap)*0.5)] -dtw-translate-y-1/2 -dtw-translate-x-1/2 dtw-flex dtw-items-center dtw-justify-center dtw-rounded-[var(--panel-inputs-arrow-radius)] dtw-p-0.5 dtw-bg-[color:var(--panel-background-color)] dtw-backdrop-blur-3xl">
+                                  <button
+                                    class="!dtw-bg-[var(--panel-inputs-arrow-bg)] dtw-rounded-[var(--panel-inputs-arrow-radius)] dtw-px-[var(--panel-inputs-group-px-arrow)] dtw-py-[var(--panel-inputs-group-py-arrow)]"><svg
+                                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                      aria-hidden="true" data-slot="icon"
+                                      class="dtw-h-[var(--panel-inputs-group-arrow-size)] dtw-w-[var(--panel-inputs-group-arrow-size)] dtw-text-[color:var(--panel-inputs-arrow-color)] group-hover:dtw-opacity-[var(--panel-action-hover-opacity)] group-hover:dtw-rotate-180 dtw-transition-transform">
+                                      <path fill-rule="evenodd"
+                                        d="M12 2.25a.75.75 0 0 1 .75.75v16.19l6.22-6.22a.75.75 0 1 1 1.06 1.06l-7.5 7.5a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 1 1 1.06-1.06l6.22 6.22V3a.75.75 0 0 1 .75-.75Z"
+                                        clip-rule="evenodd"></path>
+                                    </svg></button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            class="dtw-flex dtw-flex-col dtw-gap-[var(--panel-meta-group-gap,var(--panel-gap))] dtw-px-[var(--panel-meta-group-px)] dtw-h-full dtw-relative">
+                            <div class="dtw-w-full dtw-flex dtw-flex-col dtw-gap-1"><button
+                                class="dtw-p-0 dtw-flex dtw-w-full dtw-justify-between dtw-rounded-[var(--panel-radius-secondary,var(--panel-radius))] hover:dtw-bg-[var(--panel-meta-hover-bg,var(--panel-neutral-color))] focus:dtw-outline-none"
+                                id="headlessui-disclosure-button-:r13:" type="button" aria-expanded="false"
+                                data-headlessui-state="">
+                                <div
+                                  class="dtw-flex dtw-grow dtw-items-center dtw-font-[var(--panel-meta-font-weight,var(--panel-font-weight-light))] dtw-gap-x-1 dtw-text-[length:var(--panel-meta-emphasised-font-size)] dtw-leading-[var(--panel-meta-emphasised-line-height)] dtw-text-[color:var(--panel-content-color)]">
+                                  <div class="dtw-flex dtw-grow dtw-items-start dtw-justify-between">
+                                    <div class="dtw-flex dtw-items-center dtw-gap-x-1"><span><svg
+                                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                          stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
+                                          class="dtw-h-4 dtw-w-4 dtw-cursor-help hover:dtw-text-[color:var(--panel-icon-color-hover))]">
+                                          <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z">
+                                          </path>
+                                        </svg></span>
+                                      <p class="">Trade details</p>
+                                    </div>
+                                    <div class=""></div>
+                                  </div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    aria-hidden="true" data-slot="icon"
+                                    class="dtw-text-[color:var(--panel-icon-color,var(--panel-content-color))] !dtw-h-[var(--panel-input-token-icon-size,var(--panel-icon-size))] !dtw-w-[var(--panel-input-token-icon-size,var(--panel-icon-size))] sm:dtw-w-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))] sm:dtw-h-[var(--panel-input-token-icon-size-sm,var(--panel-icon-size-sm))]">
+                                    <path fill-rule="evenodd"
+                                      d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                                      clip-rule="evenodd"></path>
+                                  </svg>
+                                </div>
+                              </button></div>
+                            <div class="tw-mb-1 tw-flex tw-justify-between"><button
+                                class="tw-font-normal tw-text-blue dark:tw-text-blue hover:tw-text-blue-medium dark:hover:tw-text-blue-medium  tw-flex tw-items-center tw-gap-1 tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+                                type="button"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                  stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"
+                                  class="tw-w-5 tw-h-5">
+                                  <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z">
+                                  </path>
+                                </svg> Important</button>
+                              <div class="tw-inline-block "><button
+                                  class="tw-font-normal tw-text-blue dark:tw-text-blue hover:tw-text-blue-medium dark:hover:tw-text-blue-medium   tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+                                  type="button">Insurance</button></div>
+                            </div>
+                            <div class="dtw-sticky dtw-bottom-0 dtw-bg-[var(--panel-meta-action-panel-bg)]"><button
+                                class="tw-text-white dark:tw-text-white hover:tw-text-white tw-bg-gradient-to-r tw-from-blue tw-bg-blue-light hover:tw-bg-blue tw-text-shadow-blue tw-font-bold tw-w-full tw-px-6 tw-py-2.5 !tw-text-white !tw-bg-blue-light !dark:tw-bg-blue tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+                                type="button">Connect Wallet</button></div>
+                          </div>
+                        </div><span aria-hidden="true" id="headlessui-tabs-panel-:r14:" role="tabpanel" tabindex="-1"
+                          style="position: fixed; top: 1px; left: 1px; width: 1px; height: 0px; padding: 0px; margin: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border-width: 0px;"
+                          aria-labelledby="headlessui-tabs-tab-:rg:"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tw-hidden sm:tw-block">
+          <h3 class="e-title--medium tw-mb-5">Portfolio</h3>
+        </div>
+        <div class="tw-mt-4 md:tw-mt-6">
+          <div id="pool_portfolio">
+            <div
+              class="tw-relative tw-flex tw-flex-col tw-z-10 tw-rounded-2xl tw-pb-3 tw-shadow tw-border-t tw-border-t-white/10 md:tw-bg-white md:dark:tw-bg-black-dark">
+              <div class="tw-flex md:tw-hidden tw-flex-col tw-items-center tw-z-10 tw-gap-4">
+                <div class="tw-w-full tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl tw-group tw-overflow-hidden"
+                  role="row">
+                  <div colSpan="1" role="columnheader" class="tw-flex ">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Symbol</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                      <div class="tw-w-max tw-flex">
+                        <div class="tw-inline-flex tw-items-center tw-justify-center tw-flex-nowrap tw-gap-1"><a
+                            href="https://basescan.org/address/0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+                            target="_blank" rel="noreferrer" class="tw-text-left">USDC<!-- --> </a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Asset Name</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left"></div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex ">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Percentage</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                      <div class="tw-w-full tw-flex tw-items-center tw-gap-1">
+                        <div
+                          class="tw-w-full tw-h-2 tw-bg-grey-light/50 dark:tw-bg-white/10 tw-rounded-full tw-overflow-hidden">
+                          <div class="tw-h-2 tw-rounded-md tw-transition-all tw-duration-75 tw-ease-out"
+                            style="width:51.1%;background-color:#30d0ff"></div>
+                        </div><span class="tw-flex-shrink-0 tw-w-10">51.1<!-- -->%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Amount</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">3,196,731.6085</div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex ">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Value</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">$3,196,219.94</div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">24h Change</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left"></div>
+                  </div>
+                </div>
+                <div class="tw-w-full tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl tw-group tw-overflow-hidden"
+                  role="row">
+                  <div colSpan="1" role="columnheader" class="tw-flex ">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Symbol</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                      <div class="tw-w-max tw-flex">
+                        <div class="tw-inline-flex tw-items-center tw-justify-center tw-flex-nowrap tw-gap-1"><a
+                            href="https://basescan.org/address/0xcbb7c0000ab88b473b1f5afd9ef808440eed33bf"
+                            target="_blank" rel="noreferrer" class="tw-text-left">cbBTC<!-- --> </a></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Asset Name</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left"></div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex ">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Percentage</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                      <div class="tw-w-full tw-flex tw-items-center tw-gap-1">
+                        <div
+                          class="tw-w-full tw-h-2 tw-bg-grey-light/50 dark:tw-bg-white/10 tw-rounded-full tw-overflow-hidden">
+                          <div class="tw-h-2 tw-rounded-md tw-transition-all tw-duration-75 tw-ease-out"
+                            style="width:49%;background-color:#33d3ff"></div>
+                        </div><span class="tw-flex-shrink-0 tw-w-10">49<!-- -->%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Amount</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">27.6214</div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex ">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">Value</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">$3,061,050.62</div>
+                  </div>
+                  <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                    <div
+                      class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                      <div colSpan="1" role="columnheader"
+                        class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                        <div class="tw-whitespace-pre-wrap">24h Change</div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="tw-hidden md:tw-block tw-overflow-x-auto scrollbar scrollbar-limited-height tw-rounded-2xl">
+                <div class="tw-align-middle tw-inline-block tw-min-w-full">
+                  <table role="table" class="tw-min-w-full tw-border-separate tw-px-1"
+                    style="border-spacing: 0px 0.25rem;">
+                    <thead>
+                      <tr role="row">
+                        <th colspan="1" role="columnheader" title="Click to sort" style="width: 150px; min-width: 0px;"
+                          class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md tw-cursor-pointer hover:tw-bg-white-dark dark:hover:tw-bg-black-light">
+                          <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                            <div class="tw-whitespace-pre-wrap">Depositor Balance</div><span><svg
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true" data-slot="icon"
+                                class="tw-inline-block tw-h-4 tw-w-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
+                              </svg></span>
+                            <div></div>
+                          </div>
+                        </th>
+                        <th colspan="1" role="columnheader" title="Click to sort" style="width: 150px; min-width: 0px;"
+                          class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md tw-cursor-pointer hover:tw-bg-white-dark dark:hover:tw-bg-black-light">
+                          <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                            <div class="tw-whitespace-pre-wrap">Depositor Value</div><span><svg
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" aria-hidden="true" data-slot="icon"
+                                class="tw-inline-block tw-h-4 tw-w-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9"></path>
+                              </svg></span>
+                            <div></div>
+                          </div>
+                        </th>
+                        <th colspan="1" role="columnheader"
+                          class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md "
+                          style="width: 150px; min-width: 0px;">
+                          <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                            <div class="tw-whitespace-pre-wrap">Depositor Address</div>
+                            <div></div>
+                          </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody role="rowgroup">
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          1,304,041.88</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $1,372,436</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xa1f...3ec</code><code
+                            class="tw-hidden md:tw-inline">0xa1f20f5301376524ec78ca5a406bdf42677373ec</code><a
+                            class="tw-select-none" title="0xa1f20f5301376524ec78ca5a406bdf42677373ec"
+                            href="/user/0xa1f20f5301376524ec78ca5a406bdf42677373ec"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xa1f20f5301376524ec78ca5a406bdf42677373ec"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xa1f20f5301376524ec78ca5a406bdf42677373ec"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          442,172.29</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $465,363</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0x6ea...9ef</code><code
+                            class="tw-hidden md:tw-inline">0x6ea7574d133984908d6c09847aa7ac52e39f09ef</code><a
+                            class="tw-select-none" title="0x6ea7574d133984908d6c09847aa7ac52e39f09ef"
+                            href="/user/0x6ea7574d133984908d6c09847aa7ac52e39f09ef"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0x6ea7574d133984908d6c09847aa7ac52e39f09ef"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0x6ea7574d133984908d6c09847aa7ac52e39f09ef"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          303,761.16</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $319,693</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0x1f0...55e</code><code
+                            class="tw-hidden md:tw-inline">0x1f05387a1681ff06f217a6f67de8737304f1a55e</code><a
+                            class="tw-select-none" title="0x1f05387a1681ff06f217a6f67de8737304f1a55e"
+                            href="/user/0x1f05387a1681ff06f217a6f67de8737304f1a55e"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0x1f05387a1681ff06f217a6f67de8737304f1a55e"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0x1f05387a1681ff06f217a6f67de8737304f1a55e"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          294,378.56</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $309,818</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xdad...bb8</code><code
+                            class="tw-hidden md:tw-inline">0xdade6908856abf59992a97de04b15b93b655cbb8</code><a
+                            class="tw-select-none" title="0xdade6908856abf59992a97de04b15b93b655cbb8"
+                            href="/user/0xdade6908856abf59992a97de04b15b93b655cbb8"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xdade6908856abf59992a97de04b15b93b655cbb8"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xdade6908856abf59992a97de04b15b93b655cbb8"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          217,611.18</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $229,024</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xf5a...355</code><code
+                            class="tw-hidden md:tw-inline">0xf5af6e074959d496eb27741b44ff13994b779355</code><a
+                            class="tw-select-none" title="0xf5af6e074959d496eb27741b44ff13994b779355"
+                            href="/user/0xf5af6e074959d496eb27741b44ff13994b779355"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xf5af6e074959d496eb27741b44ff13994b779355"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xf5af6e074959d496eb27741b44ff13994b779355"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          166,124.54</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $174,837</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xf70...d49</code><code
+                            class="tw-hidden md:tw-inline">0xf7060b16aa9c60f7cde08ebb470aa13969d18d49</code><a
+                            class="tw-select-none" title="0xf7060b16aa9c60f7cde08ebb470aa13969d18d49"
+                            href="/user/0xf7060b16aa9c60f7cde08ebb470aa13969d18d49"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xf7060b16aa9c60f7cde08ebb470aa13969d18d49"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xf7060b16aa9c60f7cde08ebb470aa13969d18d49"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          159,588.72</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $167,959</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xe72...ad0</code><code
+                            class="tw-hidden md:tw-inline">0xe722c0a7f5d7d68f2bc228ba75d05e7f7606cad0</code><a
+                            class="tw-select-none" title="0xe722c0a7f5d7d68f2bc228ba75d05e7f7606cad0"
+                            href="/user/0xe722c0a7f5d7d68f2bc228ba75d05e7f7606cad0"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xe722c0a7f5d7d68f2bc228ba75d05e7f7606cad0"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xe722c0a7f5d7d68f2bc228ba75d05e7f7606cad0"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          122,530.01</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $128,956</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xcdc...ab1</code><code
+                            class="tw-hidden md:tw-inline">0xcdcbbd176d43005146715c597613a00dcffaaab1</code><a
+                            class="tw-select-none" title="0xcdcbbd176d43005146715c597613a00dcffaaab1"
+                            href="/user/0xcdcbbd176d43005146715c597613a00dcffaaab1"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xcdcbbd176d43005146715c597613a00dcffaaab1"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xcdcbbd176d43005146715c597613a00dcffaaab1"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          118,435.7</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $124,647</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xcd0...0f7</code><code
+                            class="tw-hidden md:tw-inline">0xcd056bdd18e2c5d109889aa43b92612d940ec0f7</code><a
+                            class="tw-select-none" title="0xcd056bdd18e2c5d109889aa43b92612d940ec0f7"
+                            href="/user/0xcd056bdd18e2c5d109889aa43b92612d940ec0f7"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xcd056bdd18e2c5d109889aa43b92612d940ec0f7"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xcd056bdd18e2c5d109889aa43b92612d940ec0f7"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                      <tr role="row" class="tw-group">
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                          107,584.29</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                          $113,227</td>
+                        <td role="cell"
+                          class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                          <code class="tw-inline md:tw-hidden">0xacb...547</code><code
+                            class="tw-hidden md:tw-inline">0xacb1534a5703f685ea5951941fbc376d1db61547</code><a
+                            class="tw-select-none" title="0xacb1534a5703f685ea5951941fbc376d1db61547"
+                            href="/user/0xacb1534a5703f685ea5951941fbc376d1db61547"><svg
+                              xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                              stroke="currentColor" aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-inline-flex tw-ml-2 tw-mr-1">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z">
+                              </path>
+                            </svg></a><a href="https://basescan.org/address/0xacb1534a5703f685ea5951941fbc376d1db61547"
+                            target="_blank" rel="noreferrer" class="tw-select-none"
+                            title="0xacb1534a5703f685ea5951941fbc376d1db61547"><svg xmlns="http://www.w3.org/2000/svg"
+                              fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                              aria-hidden="true" data-slot="icon"
+                              class="tw-h-4 tw-w-4 tw-inline-flex tw-transform tw-rotate-45">
+                              <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 6.75 12 3m0 0 3.75 3.75M12 3v18"></path>
+                            </svg></a> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="pool_detail_tabs" class="tw-mt-16"><button type="button" aria-hidden="true"
+            style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"></button>
+          <div
+            class="tw-mb-6 tw-max-w-full tw-overflow-x-auto tw-overflow-y-hidden tw-flex tw-border-b tw-border-solid tw-border-grey-dark/50"
+            role="tablist" aria-orientation="horizontal"><button
+              class="!tw-font-medium !tw-text-base tw-px-4 tw-pb-2.5 tw-relative tw-outline-none tw-transition-all tw-duration-100 tw-ease-linear hover:tw-text-grey-dark dark:hover:tw-text-white e-title--small"
+              id="headlessui-tabs-tab-:R1ddpl2m:" role="tab" type="button" aria-selected="true" tabindex="0"
+              data-headlessui-state="selected">Depositors<div
+                class="tw-h-0.5 tw-w-full tw-rounded tw-bg-gradient-to-r tw-from-blue tw-bg-blue-light tw-absolute tw-bottom-0 tw-z-20 tw-right-0 tw-left-0">
+              </div></button><button
+              class="!tw-font-medium !tw-text-base tw-px-4 tw-pb-2.5 tw-relative tw-outline-none tw-transition-all tw-duration-100 tw-ease-linear hover:tw-text-grey-dark dark:hover:tw-text-white e-title--small-secondary"
+              id="headlessui-tabs-tab-:R2ddpl2m:" role="tab" type="button" aria-selected="false" tabindex="-1"
+              data-headlessui-state="">Activity</button><button
+              class="!tw-font-medium !tw-text-base tw-px-4 tw-pb-2.5 tw-relative tw-outline-none tw-transition-all tw-duration-100 tw-ease-linear hover:tw-text-grey-dark dark:hover:tw-text-white e-title--small-secondary"
+              id="headlessui-tabs-tab-:R3ddpl2m:" role="tab" type="button" aria-selected="false" tabindex="-1"
+              data-headlessui-state="">Deposits</button><button
+              class="!tw-font-medium !tw-text-base tw-px-4 tw-pb-2.5 tw-relative tw-outline-none tw-transition-all tw-duration-100 tw-ease-linear hover:tw-text-grey-dark dark:hover:tw-text-white e-title--small-secondary"
+              id="headlessui-tabs-tab-:R4ddpl2m:" role="tab" type="button" aria-selected="false" tabindex="-1"
+              data-headlessui-state="">Withdrawals</button><button
+              class="!tw-font-medium !tw-text-base tw-px-4 tw-pb-2.5 tw-relative tw-outline-none tw-transition-all tw-duration-100 tw-ease-linear hover:tw-text-grey-dark dark:hover:tw-text-white e-title--small-secondary"
+              id="headlessui-tabs-tab-:R5ddpl2m:" role="tab" type="button" aria-selected="false" tabindex="-1"
+              data-headlessui-state="">Stats</button></div>
+          <div>
+            <div id="headlessui-tabs-panel-:R1ldpl2m:" role="tabpanel" tabindex="0" data-headlessui-state="selected">
+              <div
+                class="tw-relative tw-flex tw-flex-col tw-z-10 tw-rounded-2xl tw-pb-3 tw-shadow tw-border-t tw-border-t-white/10 md:tw-bg-white md:dark:tw-bg-black-dark">
+                <div class="tw-flex md:tw-hidden tw-flex-col tw-items-center tw-z-10 tw-gap-4">
+                  <div class="tw-w-full tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl tw-group tw-overflow-hidden"
+                    role="row">
+                    <div colSpan="1" role="columnheader" class="tw-flex ">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex ">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tw-w-full tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl tw-group tw-overflow-hidden"
+                    role="row">
+                    <div colSpan="1" role="columnheader" class="tw-flex ">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex ">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tw-w-full tw-bg-white dark:tw-bg-black-dark tw-rounded-2xl tw-group tw-overflow-hidden"
+                    role="row">
+                    <div colSpan="1" role="columnheader" class="tw-flex ">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex ">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div colSpan="1" role="columnheader" class="tw-flex tw-bg-white-dark dark:tw-bg-black-medium">
+                      <div
+                        class="tw-w-1/3 tw-flex-shrink-0 tw-text-grey-medium dark:tw-text-grey tw-border-r tw-border-solid tw-border-grey-light dark:tw-border-black-light">
+                        <div colSpan="1" role="columnheader"
+                          class="tw-py-3 tw-px-4 tw-flex tw-flex-wrap tw-gap-1 tw-capitalize">
+                          <div class="tw-whitespace-pre-wrap">
+                            <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div></div>
+                        </div>
+                      </div>
+                      <div role="cell" class="tw-w-2/3 tw-py-3 tw-px-4 tw-flex tw-text-left">
+                        <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                          <div class="tw-flex tw-items-center tw-w-3/4">
+                            <div
+                              class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                            </div><span class="tw-invisible tw-w-0">Loader</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tw-hidden md:tw-block tw-overflow-x-auto scrollbar scrollbar-limited-height tw-rounded-2xl">
+                  <div class="tw-align-middle tw-inline-block tw-min-w-full">
+                    <table role="table" class="tw-min-w-full tw-border-separate tw-px-1"
+                      style="border-spacing:0 0.25rem">
+                      <thead>
+                        <tr role="row">
+                          <th colSpan="1" role="columnheader"
+                            class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md "
+                            style="width:150px;min-width:0">
+                            <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                              <div class="tw-whitespace-pre-wrap">
+                                <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                                  <div class="tw-flex tw-items-center tw-w-3/4">
+                                    <div
+                                      class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                    </div><span class="tw-invisible tw-w-0">Loader</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div></div>
+                            </div>
+                          </th>
+                          <th colSpan="1" role="columnheader"
+                            class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md "
+                            style="width:150px;min-width:0">
+                            <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                              <div class="tw-whitespace-pre-wrap">
+                                <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                                  <div class="tw-flex tw-items-center tw-w-3/4">
+                                    <div
+                                      class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                    </div><span class="tw-invisible tw-w-0">Loader</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div></div>
+                            </div>
+                          </th>
+                          <th colSpan="1" role="columnheader"
+                            class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md "
+                            style="width:150px;min-width:0">
+                            <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                              <div class="tw-whitespace-pre-wrap">
+                                <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                                  <div class="tw-flex tw-items-center tw-w-3/4">
+                                    <div
+                                      class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                    </div><span class="tw-invisible tw-w-0">Loader</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div></div>
+                            </div>
+                          </th>
+                          <th colSpan="1" role="columnheader"
+                            class="tw-px-3 tw-py-4 tw-text-sm tw-capitalize tw-font-medium tw-text-grey-medium dark:tw-text-grey tw-bg-white dark:tw-bg-black-dark tw-rounded-md "
+                            style="width:150px;min-width:0">
+                            <div class="tw-flex tw-items-center tw-justify-start tw-text-left">
+                              <div class="tw-whitespace-pre-wrap">
+                                <div class="tw-p-2 tw-w-36 md:tw-hidden">
+                                  <div class="tw-flex tw-items-center tw-w-3/4">
+                                    <div
+                                      class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                    </div><span class="tw-invisible tw-w-0">Loader</span>
+                                  </div>
+                                </div>
+                              </div>
+                              <div></div>
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody role="rowgroup">
+                        <tr role="row" class="tw-group">
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr role="row" class="tw-group">
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr role="row" class="tw-group">
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-l-lg ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left  ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td role="cell"
+                            class="tw-p-3 tw-whitespace-nowrap tw-text-sm tw-text-black-dark dark:tw-text-white tw-bg-white-medium dark:tw-bg-black-medium tw-text-left tw-rounded-r-lg ">
+                            <div class="tw-p-2 tw-w-48 sm:tw-w-96 md:tw-w-auto">
+                              <div class="tw-flex tw-items-center tw-w-3/4">
+                                <div
+                                  class="tw-animate-pulse tw-h-5 tw-w-full tw-bg-grey dark:tw-bg-black-light tw-rounded-lg">
+                                </div><span class="tw-invisible tw-w-0">Loader</span>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div><span aria-hidden="true" id="headlessui-tabs-panel-:R2ldpl2m:" role="tabpanel" tabindex="-1"
+              style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"></span><span
+              aria-hidden="true" id="headlessui-tabs-panel-:R3ldpl2m:" role="tabpanel" tabindex="-1"
+              style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"></span><span
+              aria-hidden="true" id="headlessui-tabs-panel-:R4ldpl2m:" role="tabpanel" tabindex="-1"
+              style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"></span><span
+              aria-hidden="true" id="headlessui-tabs-panel-:R5ldpl2m:" role="tabpanel" tabindex="-1"
+              style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0"></span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="tw-bg-white-dark dark:tw-bg-black-pure tw-z-10 tw-pt-8 tw-pb-16 sm:tw-pb-8 tw-select-none">
+      <div class="tw-container tw-mx-auto">
+        <div class="container-max-limit tw-grid tw-grid-cols-5 md:tw-grid-cols-7 tw-gap-8 md:tw-gap-x-6 md:tw-gap-y-4">
+          <div
+            class="tw-col-span-4 md:tw-col-span-7 lg:tw-col-span-2 tw-flex-col tw-items-center md:tw-items-start md:tw-justify-between">
+            <img alt="dHEDGE Logo" loading="lazy" width="310" height="360" decoding="async" data-nimg="1"
+              class="tw-h-16 tw-w-12 tw-select-none" style="color:transparent"
+              src="/_next/static/media/dhedge_logo_blue.0c2920cb.svg" /><a href="https://www.tradingview.com/"
+              target="_blank" rel="noreferrer" class="tw-mt-4"><img alt="TradingView Logo" loading="lazy" width="512"
+                height="512" decoding="async" data-nimg="1"
+                class="tw-h-16 tw-w-12 tw-select-none dark:tw-hidden tw-block" style="color:transparent"
+                src="/_next/static/media/trading_view_logo.d921b35d.svg" /><img alt="TradingView Logo" loading="lazy"
+                width="180" height="180" decoding="async" data-nimg="1"
+                class="tw-h-16 tw-w-12 tw-select-none dark:tw-block tw-hidden" style="color:transparent"
+                src="/_next/static/media/trading_view_logo_white.89a3a898.svg" />
+              <p class="tw-text-sm md:tw-w-2/3 tw-text-grey-medium dark:tw-text-grey">Uses TradingView</p>
+            </a>
+          </div>
+          <div class="tw-col-span-2 md:tw-col-span-1">
+            <h4
+              class="tw-mb-3 md:tw-mb-4 tw-text-black-dark dark:tw-text-white tw-text-lg tw-uppercase tw-font-bold tw-font-heading">
+              Info</h4>
+            <ul class="link-list-container">
+              <li><a href="https://docs.dhedge.org" target="_blank" class="link-footer" rel="noreferrer">Docs</a></li>
+              <li><a class="link-footer" href="/analytics">Stats</a></li>
+              <li><a href="https://blog.dhedge.org" target="_blank" class="link-footer" rel="noreferrer">Blog</a></li>
+              <li><a class="link-footer" href="/terms-of-use">Terms Of Use</a></li>
+              <li><a href="https://docs.dhedge.org/dhedge-brand-kit" target="_blank" class="link-footer"
+                  rel="noreferrer">Brand Assets</a></li>
+            </ul>
+          </div>
+          <div class="tw-col-span-2 md:tw-col-span-1">
+            <h4
+              class="tw-mb-3 md:tw-mb-4 tw-text-black-dark dark:tw-text-white tw-text-lg tw-uppercase tw-font-bold tw-font-heading">
+              Gov</h4>
+            <ul class="link-list-container">
+              <li><a href="https://forum.dhedge.org" target="_blank" class="link-footer" rel="noreferrer">Proposals</a>
+              </li>
+              <li><a href="https://snapshot.org/#/gov.dhedge.eth" target="_blank" class="link-footer"
+                  rel="noreferrer">Voting</a></li>
+              <li><a class="link-footer" href="/dht/governance">Voting Power</a></li>
+              <li><a class="link-footer" href="/dht/legacy">Legacy DHT</a></li>
+            </ul>
+          </div>
+          <div class="tw-col-span-2 md:tw-col-span-1">
+            <h4
+              class="tw-mb-3 md:tw-mb-4 tw-text-black-dark dark:tw-text-white tw-text-lg tw-uppercase tw-font-bold tw-font-heading">
+              Dev</h4>
+            <ul class="link-list-container">
+              <li><a href="https://github.com/dhedge" target="_blank" class="link-footer" rel="noreferrer">GitHub</a>
+              </li>
+              <li><a href="https://docs.dhedge.org/security/audits-timeline" target="_blank" class="link-footer"
+                  rel="noreferrer">Audit</a></li>
+              <li><a href="https://immunefi.com/bounty/dhedge" target="_blank" class="link-footer" rel="noreferrer">Bug
+                  Bounty</a></li>
+              <li><a href="https://www.npmjs.com/package/@dhedge/v2-sdk" target="_blank" class="link-footer"
+                  rel="noreferrer">@dhedge/v2-sdk</a></li>
+            </ul>
+          </div>
+          <div class="tw-col-span-4 lg:tw-col-span-2">
+            <h4
+              class="tw-mb-3 md:tw-mb-4 tw-text-black-dark dark:tw-text-white tw-text-lg tw-uppercase tw-font-bold tw-font-heading">
+              Connect</h4>
+            <div class="tw-mt-3">
+              <div class="tw-flex tw-flex-row tw-flex-wrap tw-gap-4"><a href="https://twitter.com/dHedgeOrg"
+                  target="_blank"
+                  class="tw-flex tw-items-center tw-justify-center tw-h-8 tw-w-8 tw-rounded-full tw-bg-grey-medium dark:tw-bg-black-light hover:tw-bg-grey-dark dark:hover:tw-bg-black-medium tw-select-none"
+                  rel="noreferrer"><img alt="twitter" loading="lazy" width="1200" height="1227" decoding="async"
+                    data-nimg="1" class="tw-w-4" style="color:transparent"
+                    src="/_next/static/media/twitter_logo_white.32fde30e.svg" /></a><a href="https://discord.gg/BAWTbRA"
+                  target="_blank"
+                  class="tw-flex tw-items-center tw-justify-center tw-h-8 tw-w-8 tw-rounded-full tw-bg-grey-medium dark:tw-bg-black-light hover:tw-bg-grey-dark dark:hover:tw-bg-black-medium tw-select-none"
+                  rel="noreferrer"><img alt="discord" loading="lazy" width="71" height="55" decoding="async"
+                    data-nimg="1" class="tw-w-4" style="color:transparent"
+                    src="/_next/static/media/discord.00c56ce1.svg" /></a><a href="https://t.me/dhedge" target="_blank"
+                  class="tw-flex tw-items-center tw-justify-center tw-h-8 tw-w-8 tw-rounded-full tw-bg-grey-medium dark:tw-bg-black-light hover:tw-bg-grey-dark dark:hover:tw-bg-black-medium tw-select-none"
+                  rel="noreferrer"><img alt="telegram" loading="lazy" width="512" height="512" decoding="async"
+                    data-nimg="1" class="tw-w-4" style="color:transparent"
+                    src="/_next/static/media/telegram.52909505.svg" /></a><a
+                  href="https://www.youtube.com/channel/UCmKkvCbEFiMnO0xDJonlGjw" target="_blank"
+                  class="tw-flex tw-items-center tw-justify-center tw-h-8 tw-w-8 tw-rounded-full tw-bg-grey-medium dark:tw-bg-black-light hover:tw-bg-grey-dark dark:hover:tw-bg-black-medium tw-select-none"
+                  rel="noreferrer"><img alt="youtube" loading="lazy" width="122" height="86" decoding="async"
+                    data-nimg="1" class="tw-w-4" style="color:transparent"
+                    src="/_next/static/media/yt_logo_mono_white.37f336a4.svg" /></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="tw-z-10 tw-fixed tw-bottom-0 tw-flex sm:tw-hidden tw-justify-end tw-items-center tw-gap-2 tw-w-full tw-py-4 tw-px-2 tw-bg-white-dark dark:tw-bg-black-medium">
+      <div class="tw-flex tw-flex-row tw-gap-3"><button id="connect_wallet_button"
+          class="tw-text-white dark:tw-text-white hover:tw-text-white tw-bg-gradient-to-r tw-from-blue tw-bg-blue-light hover:tw-bg-blue tw-text-shadow-blue tw-font-bold tw-px-6 tw-py-2  tw-transition-all tw-rounded-full tw-whitespace-nowrap tw-tracking-wide tw-text-sm tw-text-center tw-text-ellipsis disabled:tw-cursor-not-allowed disabled:tw-opacity-50 tw-select-none"
+          type="button">Connect Wallet</button></div>
+    </div>
+    <div class="tw-fixed tw-z-50 tw-bottom-0 tw-left-2 md:tw-left-1/4 tw-right-2 md:tw-right-1/4"></div><!--/$-->
+  </div>
+
+</body>
+
+</html>
