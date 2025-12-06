@@ -42,7 +42,7 @@ logStatus(`Start time: ${new Date().toISOString()}`);
 
 // ---------- INPUT ----------
 logStatus("Loading CSV file...");
-const INPUT_CSV = "SOLUSDT-1m001.csv";
+const INPUT_CSV = "SOLUSDT-1h-2024-2025.csv";
 if (!fs.existsSync(INPUT_CSV)) {
     console.error(`[ERROR] File not found: ${INPUT_CSV}`);
     console.error("[ERROR] Place SOLUSDT-1m.csv in folder");
@@ -201,6 +201,10 @@ const indicators = computeIndicators(rows);
 logStatus("✓ All indicators ready");
 
 // ---------- SIMULATIONS (Sentiment / LongShort / Netflow proxies) ----------
+// NOTE: In production, these should be replaced with real API calls:
+// - Sentiment Index: CryptoMood or Santiment API (poll every 15 minutes)
+// - Netflow: Glassnode / TokenTerminal API (24h Net Exchange Inflow)
+// - Long/Short Ratio: Can be derived from funding rates or order book data
 function computeSimulations(data) {
     logStatus("Computing simulation proxies...");
     const n = data.length;
@@ -223,14 +227,44 @@ function computeSimulations(data) {
     // sentiment_index: zscore of volDaily with 30-day window
     const window = 30 * DAY;
     const sentiment_index = new Array(n).fill(0);
+
+    // Optimized: use sliding window instead of slice/filter each iteration
+    let windowSum = 0;
+    let windowCount = 0;
+    let windowValues = [];
+
     for (let i = 0; i < n; i++) {
         if (i >= window) {
-            const w = volDaily.slice(i - window, i).filter((x) => x !== null);
-            const m = mean(w),
-                s = std(w);
+            // Remove oldest value
+            const oldVal = volDaily[i - window];
+            if (oldVal !== null) {
+                windowSum -= oldVal;
+                windowCount--;
+                const idx = windowValues.indexOf(oldVal);
+                if (idx > -1) windowValues.splice(idx, 1);
+            }
+        }
+
+        // Add current value
+        const currentVal = volDaily[i];
+        if (currentVal !== null) {
+            windowSum += currentVal;
+            windowCount++;
+            windowValues.push(currentVal);
+        }
+
+        if (i >= window && windowCount > 0) {
+            const m = windowSum / windowCount;
+            let sumSq = 0;
+            for (let v of windowValues) {
+                sumSq += (v - m) * (v - m);
+            }
+            const s = Math.sqrt(sumSq / windowCount);
             sentiment_index[i] = s === 0 ? 0 : (volDaily[i] - m) / s;
-        } else sentiment_index[i] = 0;
-        logStatus(`sentiment_index[${i}/${n}] = ${sentiment_index[i]}`);
+        } else {
+            sentiment_index[i] = 0;
+        }
+
         if (i % 1000 === 0) {
             logProgress(i, n, "Computing sentiment index");
         }
@@ -250,13 +284,25 @@ function computeSimulations(data) {
 
     logStatus("Computing netflow z-score (24h return * volume)...");
     // netflow_zscore proxy: 24h return * 24h volume normalized
+    // Optimized: use sliding window for volume sum
     let arr = [];
-    for (let i = DAY; i < n; i++) {
-        let r = (data[i].close - data[i - DAY].close) / data[i - DAY].close;
-        let v = 0;
-        for (let j = i - DAY + 1; j <= i; j++) v += data[j].volume;
-        arr.push(r * v);
+    let volumeSum = 0;
+
+    // Initialize first window
+    for (let j = 1; j <= DAY && j < n; j++) {
+        volumeSum += data[j].volume;
     }
+
+    for (let i = DAY; i < n; i++) {
+        // Update sliding window volume sum
+        if (i > DAY) {
+            volumeSum = volumeSum - data[i - DAY].volume + data[i].volume;
+        }
+
+        let r = (data[i].close - data[i - DAY].close) / data[i - DAY].close;
+        arr.push(r * volumeSum);
+    }
+
     const mArr = mean(arr),
         sArr = std(arr);
     const netflow_z = new Array(n).fill(0);
@@ -281,30 +327,37 @@ function runBacktest(params, showProgress = false) {
     const BASE_SPACING = params.BASE_SPACING;
     const GRID0_MULT = params.GRID0_MULT;
     const NETFLOW_SENS = params.NETFLOW_SENS; // multiplier to scale netflow thresholds
-    const FEE = 0.001;
-    const BASE_TP = 0.014;
+    const FEE = 0.001; // 0.1% per trade (0.2% round trip)
+    const BASE_TP = 0.018; // 1.8% base take-profit (increased to ensure profit after fees)
 
     let usdt = START_USDT,
         sol = 0;
-    let orders = []; // pending sell orders: { trigger, amount }
+    let orders = []; // pending sell orders: { trigger, amount, buyPrice, buyTime }
     let trades = [];
     let equity = [];
     let peak = -Infinity,
         maxDD = 0;
     let prevClose = rows[0].close;
+    const MAX_HOLD_TIME = 24 * 60; // Max hold time: 24 hours (in minutes for 1h candles)
 
     // helper: build geometric grid around current price
+    // Optimized: cache grid levels and only rebuild when spacing changes
     function buildGrid(center, spacing, count) {
         const half = Math.floor(count / 2);
         let levels = [];
-        for (let k = -half; k <= count - half; k++)
-            levels.push(center * Math.pow(1 + spacing, k));
-        // unique & sort
-        levels = Array.from(new Set(levels)).sort((a, b) => a - b);
-        return levels;
+        const spacingFactor = 1 + spacing;
+        let currentLevel = center * Math.pow(spacingFactor, -half);
+        for (let k = -half; k <= count - half; k++) {
+            levels.push(currentLevel);
+            currentLevel *= spacingFactor;
+        }
+        // unique & sort (using Set for deduplication)
+        const uniqueLevels = new Set(levels);
+        return Array.from(uniqueLevels).sort((a, b) => a - b);
     }
 
     let gridLevels = buildGrid(rows[0].close, BASE_SPACING, GRID_COUNT);
+    let lastSpacing = BASE_SPACING;
     let gridRebuilds = 0;
     let buyCount = 0;
     let sellCount = 0;
@@ -332,36 +385,60 @@ function runBacktest(params, showProgress = false) {
         let tp = BASE_TP;
         let gridEnabled = true;
 
-        // Tier0: sentiment
+        // ========== TIER 0: SENTIMENT INDEX FILTER ==========
+        // Rules:
+        // - Sentiment_Index ≥ +1.5 AND Long/Short Ratio > 2 → Pause opening new grids (Overheated, high risk)
+        // - Sentiment_Index ≤ −1.0 → Reduce grid spacing by 20% (Panic, often leads to V-shaped recovery)
         const sIdx = sim.sentiment_index[i] || 0;
         const lsr = sim.long_short_ratio[i] || 1.0;
-        if (sIdx >= 1.5 && lsr > 2.0) gridEnabled = false;
-        else if (sIdx <= -1.0) spacing = BASE_SPACING * 0.7; // more aggressive tighten for sim
+        if (sIdx >= 1.5 && lsr > 2.0) {
+            gridEnabled = false; // Pause grid - overheated market, high risk of sharp drop
+        } else if (sIdx <= -1.0) {
+            spacing = BASE_SPACING * 0.8; // Reduce spacing by 20% (0.8 = 80% of base)
+        }
 
-        // Tier1: netflow (sensitive scaling)
+        // ========== TIER 1: ON-CHAIN FUND FLOW FILTER ==========
+        // Metric: 24h Net Exchange Inflow (z-score normalized)
+        // Rules:
+        // - Net Inflow > 3σ → Reduce grid spacing to 1.0% (Higher probability of selling pressure)
+        // - Net Outflow > 2σ → Widen grid spacing to 1.8% (Higher probability of upward movement)
         const nf = sim.netflow_z[i] || 0;
-        if (nf > 3 * NETFLOW_SENS)
-            spacing = 0.01; // big inflow -> tighten spacing
-        else if (nf < -2 * NETFLOW_SENS) spacing = 0.018; // big outflow -> widen
+        if (nf > 3 * NETFLOW_SENS) {
+            spacing = 0.01; // 1.0% - Big inflow, tighten spacing (selling pressure expected)
+        } else if (nf < -2 * NETFLOW_SENS) {
+            spacing = 0.018; // 1.8% - Big outflow, widen spacing (upward movement expected)
+        }
 
-        // Tier2: volatility
+        // ========== TIER 2: VOLATILITY FILTER ==========
+        // Calculation: ATR(14) ÷ Current Price = Real-time Volatility %
+        // Rules:
+        // - Volatility < 1% → Reduce take-profit to 1.2% (Still profitable after 0.2% fees)
+        // - Volatility > 3% → Widen take-profit to 2.5% (Prevent false breakouts, capture more)
+        // Note: Minimum TP must be > 0.2% (round trip fees) to be profitable
         const vol = indicators.volPct[i] || 0;
-        if (vol < 0.01) tp = 0.009;
-        else if (vol > 0.03) tp = 0.022;
-        else tp = BASE_TP;
+        if (vol < 0.01) {
+            tp = 0.012; // 1.2% - Low volatility, narrow TP (still profitable: 1.2% - 0.2% = 1.0%)
+        } else if (vol > 0.03) {
+            tp = 0.025; // 2.5% - High volatility, wide TP (capture more in volatile markets)
+        } else {
+            tp = BASE_TP; // Default TP 1.8% (profitable: 1.8% - 0.2% = 1.6%)
+        }
 
-        // rebuild grid occasionally (every 30m) or if spacing changed significantly
-        if (i % 30 === 0) {
+        // rebuild grid only when spacing changed significantly or every 30m
+        const spacingChanged = Math.abs(spacing - lastSpacing) > 0.001;
+        if (spacingChanged || i % 30 === 0) {
             gridLevels = buildGrid(close, spacing, GRID_COUNT);
+            lastSpacing = spacing;
             gridRebuilds++;
         }
 
         // Process price crossing grid levels for buys
         // BUY: if prevClose > level && close <= level -> buy (if gridEnabled)
-        for (let lvl of gridLevels) {
-            if (prevClose > lvl && close <= lvl) {
-                // buy only if enabled
-                if (gridEnabled) {
+        // Optimized: only check when price moved down (prevClose > close)
+        if (gridEnabled && prevClose > close) {
+            for (let lvl of gridLevels) {
+                // Check if price crossed level from above
+                if (prevClose > lvl && close <= lvl) {
                     // allocate GRID_UNIT_USDT per buy
                     const usdtPos = GRID_UNIT_USDT;
                     const qty = usdtPos / lvl;
@@ -370,8 +447,13 @@ function runBacktest(params, showProgress = false) {
                     if (usdt >= cost + fee) {
                         usdt -= cost + fee;
                         sol += qty;
-                        // create sell order at lvl*(1+tp)
-                        orders.push({ trigger: lvl * (1 + tp), amount: qty });
+                        // create sell order at lvl*(1+tp) with buy info for tracking
+                        orders.push({
+                            trigger: lvl * (1 + tp),
+                            amount: qty,
+                            buyPrice: lvl,
+                            buyTime: i,
+                        });
                         buyCount++;
                         trades.push({
                             ts: timestamp,
@@ -387,47 +469,77 @@ function runBacktest(params, showProgress = false) {
         }
 
         // Process pending sells that trigger <= high
-        let executedIdx = [];
+        // Also check for positions held too long (force sell if profitable or break-even)
+        const remainingOrders = [];
         for (let j = 0; j < orders.length; j++) {
-            if (orders[j].trigger <= high) {
-                const o = orders[j];
+            const o = orders[j];
+            let shouldSell = false;
+            let executePrice = o.trigger;
+
+            // Check if trigger price reached
+            if (high >= o.trigger) {
+                shouldSell = true;
+                // Execute at trigger price or better
+                executePrice = Math.max(o.trigger, close);
+            }
+            // Force sell if held too long and at least break-even (after fees)
+            else if (i - o.buyTime >= MAX_HOLD_TIME) {
+                const minProfitPrice = o.buyPrice * (1 + 0.002 + FEE * 2); // Break-even + small profit
+                if (close >= minProfitPrice) {
+                    shouldSell = true;
+                    executePrice = close;
+                }
+            }
+
+            if (shouldSell) {
                 if (sol >= o.amount) {
                     sol -= o.amount;
-                    const revenue = o.amount * o.trigger;
+                    const revenue = o.amount * executePrice;
                     const fee = revenue * FEE;
                     usdt += revenue - fee;
                     sellCount++;
                     trades.push({
                         ts: timestamp,
                         side: "SELL",
-                        price: o.trigger,
+                        price: executePrice,
                         amount: o.amount,
                         fee,
                         type: "grid-sell",
                     });
-                    executedIdx.push(j);
+                    // Don't add to remainingOrders (executed)
                 } else {
-                    executedIdx.push(j); // remove if cannot fill
+                    // Cannot fill, remove order
                 }
+            } else {
+                remainingOrders.push(o);
             }
         }
-        // remove executed orders in reverse order
-        for (let k = executedIdx.length - 1; k >= 0; k--)
-            orders.splice(executedIdx[k], 1);
+        orders = remainingOrders;
 
-        // Tier3: extra actions (Grid0 buy and Full TP)
+        // ========== TIER 3: TRADITIONAL TECHNICAL FILTER ==========
+        // Metrics: RSI(6) + Bollinger Band Width
+        // Rules:
+        // - 30 ≤ RSI ≤ 70 AND Bollinger Band Width < 2% → Run grid normally (default behavior)
+        // - RSI < 25 AND price breaks below Bollinger Lower Band → Grid 0 buy (0.5x standard position)
+        // - RSI > 75 AND price breaks above Bollinger Upper Band → Full take-profit (Prevent pump-and-dump)
         const rsiVal = indicators.rsi[i];
         const bbVal = indicators.bb[i];
         if (rsiVal !== null && bbVal !== null) {
+            // Grid 0 Buy: Oversold condition with price below lower BB
             if (rsiVal < 25 && close < bbVal.lower) {
-                const usdtPos = GRID_UNIT_USDT * GRID0_MULT;
+                const usdtPos = GRID_UNIT_USDT * GRID0_MULT; // 0.5x standard position
                 const qty = usdtPos / close;
                 const cost = qty * close;
                 const fee = cost * FEE;
                 if (usdt >= cost + fee) {
                     usdt -= cost + fee;
                     sol += qty;
-                    orders.push({ trigger: close * (1 + tp), amount: qty });
+                    orders.push({
+                        trigger: close * (1 + tp),
+                        amount: qty,
+                        buyPrice: close,
+                        buyTime: i,
+                    });
                     grid0Count++;
                     trades.push({
                         ts: timestamp,
@@ -439,6 +551,7 @@ function runBacktest(params, showProgress = false) {
                     });
                 }
             }
+            // Full Take-Profit: Overbought condition with price above upper BB
             if (rsiVal > 75 && close > bbVal.upper) {
                 if (sol > 0) {
                     const revenue = sol * close;
@@ -454,9 +567,10 @@ function runBacktest(params, showProgress = false) {
                         type: "full-tp",
                     });
                     sol = 0;
-                    orders = [];
+                    orders = []; // Clear all pending orders
                 }
             }
+            // Normal operation: 30 ≤ RSI ≤ 70 AND BB Width < 2% → handled by default grid behavior above
         }
 
         // record equity
@@ -495,9 +609,9 @@ function runBacktest(params, showProgress = false) {
 // ---------- SEARCH SPACE ----------
 const SEARCH_RANGES = {
     GRID_UNIT_USDT: [5, 10, 20, 40], // try different per-buy sizes
-    BASE_SPACING: [0.012, 0.014, 0.016, 0.018],
+    BASE_SPACING: [0.01, 0.012, 0.014, 0.016, 0.018], // Added 0.010 for tighter grids
     GRID0_MULT: [0.5, 1.0, 1.5],
-    NETFLOW_SENS: [1.0, 0.7, 0.5], // smaller -> more sensitive triggers
+    NETFLOW_SENS: [0.5, 0.7, 1.0, 1.2], // Added more options for sensitivity tuning
 };
 
 logStatus("Generating parameter combinations...");

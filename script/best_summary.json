@@ -1,24 +1,24 @@
 {
   "params": {
     "GRID_UNIT_USDT": 5,
-    "BASE_SPACING": 0.012,
+    "BASE_SPACING": 0.01,
     "GRID0_MULT": 0.5,
-    "NETFLOW_SENS": 1,
+    "NETFLOW_SENS": 0.5,
     "GRID_COUNT": 25,
     "START_USDT": 1000
   },
-  "final_value": 1174.908991,
-  "roi_pct": 17.490899,
-  "max_drawdown_pct": 0.045299,
-  "final_usdt": 1145.046828,
-  "final_sol": 0.29247956,
-  "total_trades": 100962,
+  "final_value": 1045.094423,
+  "roi_pct": 4.509442,
+  "max_drawdown_pct": 8.43216,
+  "final_usdt": 1030.212542,
+  "final_sol": 0.09612997,
+  "total_trades": 8543,
   "stats": {
-    "buyCount": 50643,
-    "sellCount": 3641,
-    "grid0Count": 31468,
-    "fullTpCount": 15210,
-    "gridRebuilds": 26226,
-    "totalTrades": 100962
+    "buyCount": 4282,
+    "sellCount": 3427,
+    "grid0Count": 615,
+    "fullTpCount": 219,
+    "gridRebuilds": 463,
+    "totalTrades": 8543
   }
 }
