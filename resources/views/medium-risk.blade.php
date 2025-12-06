@@ -251,26 +251,35 @@
     </div>
 
     @php
+    // Set timezone to UTC for consistency
+    date_default_timezone_set('UTC');
+
     $tradesFile = base_path('script/best_trades.json');
     $summaryFile = base_path('script/best_summary.json');
     $trades = [];
     $startValue = 1000;
 
     if (file_exists($tradesFile)) {
-    $tradesJson = file_get_contents($tradesFile);
-    $trades = json_decode($tradesJson, true);
-    if ($trades) {
+    $tradesJson = @file_get_contents($tradesFile);
+    if ($tradesJson !== false) {
+    $trades = @json_decode($tradesJson, true);
+    if (json_last_error() === JSON_ERROR_NONE && is_array($trades) && !empty($trades)) {
     usort($trades, function($a, $b) {
-    return $b['ts'] - $a['ts'];
+    return ($b['ts'] ?? 0) - ($a['ts'] ?? 0);
     });
+    } else {
+    $trades = [];
+    }
     }
     }
 
     if (file_exists($summaryFile)) {
-    $summaryJson = file_get_contents($summaryFile);
-    $summary = json_decode($summaryJson, true);
-    if ($summary && isset($summary['params']['START_USDT'])) {
-    $startValue = $summary['params']['START_USDT'];
+    $summaryJson = @file_get_contents($summaryFile);
+    if ($summaryJson !== false) {
+    $summary = @json_decode($summaryJson, true);
+    if (json_last_error() === JSON_ERROR_NONE && is_array($summary) && isset($summary['params']['START_USDT'])) {
+    $startValue = (float)$summary['params']['START_USDT'];
+    }
     }
     }
 
@@ -290,14 +299,18 @@
     $equityPoints = [];
 
     foreach ($tradesForEquity as $trade) {
-    $price = $trade['price'];
-    $fee = $trade['fee'] ?? 0;
-    $side = $trade['side'] ?? '';
+    if (!isset($trade['price']) || !isset($trade['ts'])) {
+    continue;
+    }
+
+    $price = (float)$trade['price'];
+    $fee = (float)($trade['fee'] ?? 0);
+    $side = (string)($trade['side'] ?? '');
 
     // Handle different trade types
     if (strpos($side, 'SELL') !== false || strpos($side, 'FULL-TP') !== false || strpos($side, 'TP') !== false) {
     // Selling SOL
-    $amountSold = $trade['amountSold'] ?? $trade['amount'] ?? 0;
+    $amountSold = (float)($trade['amountSold'] ?? $trade['amount'] ?? 0);
     if ($amountSold > 0) {
     $usdtReceived = $amountSold * $price;
     $usdtBalance += $usdtReceived - $fee;
@@ -307,7 +320,7 @@
     }
     } else {
     // Buying SOL (BUY, GRID0-BUY, etc.)
-    $amount = $trade['amount'] ?? 0;
+    $amount = (float)($trade['amount'] ?? 0);
     if ($amount > 0) {
     $usdtSpent = $amount * $price;
     $usdtBalance -= ($usdtSpent + $fee);
@@ -332,7 +345,7 @@
         // Update maxEquity after calculating drawdown
         $maxEquity=max($maxEquity, $equity);
 
-        $equityPoints[]=[ 'ts'=> $trade['ts'],
+        $equityPoints[]=[ 'ts'=> (int)$trade['ts'],
         'equity' => $equity,
         'drawdown' => $drawdown
         ];
@@ -345,7 +358,7 @@
             $point=$equityPoints[$i];
             $equityData[]=round($point['equity'], 2);
             $drawdownData[]=round($point['drawdown'], 2);
-            $date=date('Y-m-d', $point['ts'] / 1000);
+            $date=date('Y-m-d', (int)($point['ts'] / 1000));
             $labels[]=$date;
             }
 
@@ -353,7 +366,7 @@
                 $lastPoint=$equityPoints[count($equityPoints) - 1];
                 $equityData[]=round($lastPoint['equity'], 2);
                 $drawdownData[]=round($lastPoint['drawdown'], 2);
-                $date=date('Y-m-d', $lastPoint['ts'] / 1000);
+                $date=date('Y-m-d', (int)($lastPoint['ts'] / 1000));
                 $labels[]=$date;
                 }
                 }
