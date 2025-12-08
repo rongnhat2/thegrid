@@ -328,7 +328,7 @@ function runBacktest(params, showProgress = false) {
     const GRID0_MULT = params.GRID0_MULT;
     const NETFLOW_SENS = params.NETFLOW_SENS; // multiplier to scale netflow thresholds
     const FEE = 0.001; // 0.1% per trade (0.2% round trip)
-    const BASE_TP = 0.04; // 4% base take-profit (aggressive: 3-5% range for maximizing per-trade profit)
+    const BASE_TP = 0.17; // 17% base take-profit (đẩy biên lợi nhuận lên cao)
 
     let usdt = START_USDT,
         sol = 0;
@@ -386,45 +386,47 @@ function runBacktest(params, showProgress = false) {
         let gridEnabled = true;
 
         // ========== TIER 0: SENTIMENT INDEX FILTER ==========
-        // AGGRESSIVE MODE: Filters relaxed - always run grid for maximal exposure
-        // Original rules disabled to accept larger drawdowns and maximize profit opportunities
-        // const sIdx = sim.sentiment_index[i] || 0;
-        // const lsr = sim.long_short_ratio[i] || 1.0;
-        // if (sIdx >= 1.5 && lsr > 2.0) {
-        //     gridEnabled = false; // Pause grid - DISABLED in aggressive mode
-        // } else if (sIdx <= -1.0) {
-        //     spacing = BASE_SPACING * 0.8; // Reduce spacing - DISABLED in aggressive mode
-        // }
-
-        // ========== TIER 1: ON-CHAIN FUND FLOW FILTER ==========
-        // AGGRESSIVE MODE: Netflow filter disabled - always use base spacing for consistent exposure
-        // Original rules disabled to maximize exposure to all price moves
-        // const nf = sim.netflow_z[i] || 0;
-        // if (nf > 3 * NETFLOW_SENS) {
-        //     spacing = 0.01; // DISABLED in aggressive mode
-        // } else if (nf < -2 * NETFLOW_SENS) {
-        //     spacing = 0.018; // DISABLED in aggressive mode
-        // }
-
-        // ========== TIER 2: VOLATILITY FILTER ==========
-        // AGGRESSIVE MODE: Simplified take-profit - maximize per-trade profit (3-5% range)
-        // Calculation: ATR(14) ÷ Current Price = Real-time Volatility %
-        // Rules (AGGRESSIVE):
-        // - Low volatility → 3% take-profit
-        // - High volatility → 5% take-profit
-        // - Default: 4% take-profit
-        // This maximizes gains on each executed grid while keeping targets achievable
-        const vol = indicators.volPct[i] || 0;
-        if (vol < 0.01) {
-            tp = 0.03; // 3% - Low volatility, aggressive but achievable
-        } else if (vol > 0.03) {
-            tp = 0.05; // 5% - High volatility, capture bigger moves
-        } else {
-            tp = BASE_TP; // Default TP 4% for maximizing per-trade profit
+        // Rules:
+        // - Sentiment_Index ≥ +1.5 AND Long/Short Ratio > 2 → Pause opening new grids (Overheated, high risk)
+        // - Sentiment_Index ≤ −1.0 → Reduce grid spacing by 20% (Panic, often leads to V-shaped recovery)
+        const sIdx = sim.sentiment_index[i] || 0;
+        const lsr = sim.long_short_ratio[i] || 1.0;
+        if (sIdx >= 1.5 && lsr > 2.0) {
+            gridEnabled = false; // Pause grid - overheated market, high risk of sharp drop
+        } else if (sIdx <= -1.0) {
+            spacing = BASE_SPACING * 0.8; // Reduce spacing by 20% (0.8 = 80% of base)
         }
 
-        // CLAMP TP: 0.5% ≤ TP ≤ 10% (aggressive range: 3-5% focus)
-        tp = Math.max(0.005, Math.min(0.1, tp));
+        // ========== TIER 1: ON-CHAIN FUND FLOW FILTER ==========
+        // Metric: 24h Net Exchange Inflow (z-score normalized)
+        // Rules:
+        // - Net Inflow > 3σ → Reduce grid spacing to 1.0% (Higher probability of selling pressure)
+        // - Net Outflow > 2σ → Widen grid spacing to 1.8% (Higher probability of upward movement)
+        const nf = sim.netflow_z[i] || 0;
+        if (nf > 3 * NETFLOW_SENS) {
+            spacing = 0.01; // 1.0% - Big inflow, tighten spacing (selling pressure expected)
+        } else if (nf < -2 * NETFLOW_SENS) {
+            spacing = 0.018; // 1.8% - Big outflow, widen spacing (upward movement expected)
+        }
+
+        // ========== TIER 2: VOLATILITY FILTER ==========
+        // Calculation: ATR(14) ÷ Current Price = Real-time Volatility %
+        // Rules:
+        // - Volatility < 1% → Take-profit 12% (vẫn đảm bảo lợi nhuận sau fees)
+        // - Volatility > 3% → Take-profit 20% (capture more in volatile markets)
+        // - Default: TP 17% (đẩy biên lợi nhuận lên cao)
+        // Note: Minimum TP must be > 0.2% (round trip fees) to be profitable
+        const vol = indicators.volPct[i] || 0;
+        if (vol < 0.01) {
+            tp = 0.12; // 12% - Low volatility, vẫn đảm bảo lợi nhuận cao
+        } else if (vol > 0.03) {
+            tp = 0.2; // 20% - High volatility, capture more in volatile markets
+        } else {
+            tp = BASE_TP; // Default TP 17% (đẩy biên lợi nhuận lên cao)
+        }
+
+        // CLAMP TP: 0.5% ≤ TP ≤ 25% (cho phép TP cao để đạt lợi nhuận 17%+)
+        tp = Math.max(0.005, Math.min(0.25, tp));
 
         // rebuild grid only when spacing changed significantly or every 30m
         const spacingChanged = Math.abs(spacing - lastSpacing) > 0.001;
@@ -609,12 +611,11 @@ function runBacktest(params, showProgress = false) {
 }
 
 // ---------- SEARCH SPACE ----------
-// AGGRESSIVE PROFIT OPTIMIZATION CONFIG
 const SEARCH_RANGES = {
-    GRID_UNIT_USDT: [20, 30, 40, 50], // Increased from 5→20-50 USDT per grid for higher exposure
-    BASE_SPACING: [0.02, 0.022, 0.025, 0.028, 0.03], // Widened from 0.01→0.02-0.03 (2-3%) for bigger swings
-    GRID0_MULT: [1.0, 1.5, 2.0], // Increased to 1×-2× standard grid size for aggressive accumulation
-    NETFLOW_SENS: [0.5, 0.7, 1.0, 1.2], // Keep existing sensitivity options
+    GRID_UNIT_USDT: [5, 10, 20, 40], // try different per-buy sizes
+    BASE_SPACING: [0.01, 0.012, 0.014, 0.016, 0.018], // Added 0.010 for tighter grids
+    GRID0_MULT: [0.5, 1.0, 1.5],
+    NETFLOW_SENS: [0.5, 0.7, 1.0, 1.2], // Added more options for sensitivity tuning
 };
 
 logStatus("Generating parameter combinations...");
