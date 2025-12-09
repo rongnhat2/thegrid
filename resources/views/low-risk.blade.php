@@ -32,7 +32,7 @@
         <header class="fixed top-0 left-0 w-full z-50 bg-[#090A0B] border-b border-[#23262F]">
             <div class="w-full px-6">
                 <div class="h-[80px] flex justify-between items-center">
-                    <a href="index - Copy.html" class="flex items-center gap-2">
+                    <a href="/" class="flex items-center gap-2">
                         <img src="assets/images/logo.png" alt="strategy Logo" width="36" height="36">
                         <span class="text-2xl font-semibold text-[#475FFF]">Grid Strategies</span>
                     </a>
@@ -53,7 +53,7 @@
             <div class="container mx-auto px-5 max-w-7xl">
                 <!-- Breadcrumb -->
                 <div class="flex items-center gap-2 mb-6 text-sm">
-                    <a href="index - Copy.html" class="text-[#A1A7BB] hover:text-white">Strategies</a>
+                    <a href="/" class="text-[#A1A7BB] hover:text-white">Strategies</a>
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A1A7BB" stroke-width="2">
                         <path d="M9 18l6-6-6-6" />
                     </svg>
