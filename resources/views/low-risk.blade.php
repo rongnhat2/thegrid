@@ -2,7 +2,7 @@
 <html class="is-scrolling" lang="en">
 
 <head>
-    <title>Medium Risk Strategy - Grid Strategies</title>
+    <title>Low Risk Strategy - Grid Strategies</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico">
@@ -57,7 +57,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A1A7BB" stroke-width="2">
                         <path d="M9 18l6-6-6-6" />
                     </svg>
-                    <span class="text-white">Medium Risk Strategy</span>
+                    <span class="text-white">Low Risk Strategy</span>
                 </div>
 
                 <!-- Strategy Header -->
@@ -65,7 +65,7 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                         <div>
                             <div class="flex items-center gap-3 mb-3">
-                                <h1 class="text-4xl font-bold text-white">Medium Risk Strategy</h1>
+                                <h1 class="text-4xl font-bold text-white">Low Risk Strategy</h1>
                                 <span class="px-3 py-1 bg-[#ffffff]/20 text-[#ffffff] text-sm font-semibold rounded-full">Balanced</span>
                             </div>
                             <p class="text-[#A1A7BB] text-lg max-w-3xl">
