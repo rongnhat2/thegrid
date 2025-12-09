@@ -254,8 +254,8 @@
     // Set timezone to UTC for consistency
     date_default_timezone_set('UTC');
 
-    $tradesFile = base_path('script/best_trades2.json');
-    $summaryFile = base_path('script/best_summary2.json');
+    $tradesFile = base_path('script/best_trades1.json');
+    $summaryFile = base_path('script/best_summary1.json');
     $trades = [];
     $startValue = 1000;
 

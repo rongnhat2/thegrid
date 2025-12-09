@@ -84,7 +84,7 @@
                                 <span class="px-3 py-1 bg-[#ffffff]/20 text-[#ffffff] text-xs font-semibold rounded-full">Conservative</span>
                             </div>
                             <div class="mb-6">
-                                <div class="text-4xl font-bold text-white mb-1">+12.5%</div>
+                                <div class="text-4xl font-bold text-white mb-1">+8.7%</div>
                                 <div class="text-sm text-[#ffffff]">6M ROI Backtest</div>
                             </div>
                             <!-- Mini Chart -->
@@ -116,7 +116,7 @@
                                     <span class="text-[#ffffff] font-semibold">Low</span>
                                 </div>
                             </div>
-                            <a href="/medium-risk" class="select-strategy-btn w-full px-6 py-3 rounded-xl bg-[#3B82F633] text-black font-semibold text-white hover:bg-[#3B82F633] transition-all duration-200 transform hover:scale-[1.02] text-center block">
+                            <a href="/low-risk" class="select-strategy-btn w-full px-6 py-3 rounded-xl bg-[#3B82F633] text-black font-semibold text-white hover:bg-[#3B82F633] transition-all duration-200 transform hover:scale-[1.02] text-center block">
                                 View Details
                             </a>
                         </div>
@@ -130,7 +130,7 @@
                                 <span class="px-3 py-1 bg-[#ffffff]/20 text-[#ffffff] text-xs font-semibold rounded-full">Balanced</span>
                             </div>
                             <div class="mb-6">
-                                <div class="text-4xl font-bold text-white mb-1">+28.1%</div>
+                                <div class="text-4xl font-bold text-white mb-1">+17.1%</div>
                                 <div class="text-sm text-[#A1A7BB]">6M ROI Backtest</div>
                             </div>
                             <!-- Mini Chart -->
@@ -176,7 +176,7 @@
                                 <span class="px-3 py-1 bg-[#ffffff]/20 text-[#ffffff] text-xs font-semibold rounded-full">Aggressive</span>
                             </div>
                             <div class="mb-6">
-                                <div class="text-4xl font-bold text-white mb-1">+60.6%</div>
+                                <div class="text-4xl font-bold text-white mb-1">+31.9%</div>
                                 <div class="text-sm text-[#A1A7BB]">6M ROI Backtest</div>
                             </div>
                             <!-- Mini Chart -->
@@ -208,7 +208,7 @@
                                     <span class="text-[#ffffff] font-semibold">High</span>
                                 </div>
                             </div>
-                            <a href="/medium-risk" class="select-strategy-btn w-full px-6 py-3 rounded-xl  text-white bg-[#3B82F633]  font-semibold hover:bg-[#3B82F633] transition-all duration-200 transform hover:scale-[1.02] text-center block">
+                            <a href="/high-risk" class="select-strategy-btn w-full px-6 py-3 rounded-xl  text-white bg-[#3B82F633]  font-semibold hover:bg-[#3B82F633] transition-all duration-200 transform hover:scale-[1.02] text-center block">
                                 View Details
                             </a>
                         </div>

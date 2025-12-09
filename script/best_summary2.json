@@ -7,18 +7,18 @@
     "GRID_COUNT": 25,
     "START_USDT": 1000
   },
-  "final_value": 1087.680691,
-  "roi_pct": 8.768069,
-  "max_drawdown_pct": 12.981874,
-  "final_usdt": 1072.79881,
+  "final_value": 1171.199355,
+  "roi_pct": 17.119935,
+  "max_drawdown_pct": 13.168285,
+  "final_usdt": 1156.317474,
   "final_sol": 0.09612997,
-  "total_trades": 6895,
+  "total_trades": 5220,
   "stats": {
-    "buyCount": 4453,
-    "sellCount": 1562,
+    "buyCount": 4282,
+    "sellCount": 47,
     "grid0Count": 615,
-    "fullTpCount": 265,
+    "fullTpCount": 276,
     "gridRebuilds": 463,
-    "totalTrades": 6895
+    "totalTrades": 5220
   }
 }

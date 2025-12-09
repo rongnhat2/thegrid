@@ -19,3 +19,9 @@ Route::get('/', function () {
 Route::get('/medium-risk', function () {
     return view('medium-risk');
 });
+Route::get('/low-risk', function () {
+    return view('low-risk');
+});
+Route::get('/high-risk', function () {
+    return view('high-risk');
+});

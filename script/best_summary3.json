@@ -1,0 +1,24 @@
+{
+  "params": {
+    "GRID_UNIT_USDT": 20,
+    "BASE_SPACING": 0.02,
+    "GRID0_MULT": 1,
+    "NETFLOW_SENS": 0.5,
+    "GRID_COUNT": 25,
+    "START_USDT": 1000
+  },
+  "final_value": 1318.586484,
+  "roi_pct": 31.858648,
+  "max_drawdown_pct": 26.301225,
+  "final_usdt": 1279.025557,
+  "final_sol": 0.25554504,
+  "total_trades": 4373,
+  "stats": {
+    "buyCount": 2397,
+    "sellCount": 1137,
+    "grid0Count": 614,
+    "fullTpCount": 225,
+    "gridRebuilds": 437,
+    "totalTrades": 4373
+  }
+}
